@@ -19,7 +19,7 @@ export default new Vuetify({
     },
     themes: {
       light: {
-        primary: "#0A57FF", //기본컬러
+        primary: "#008EEC", //기본컬러
         secondary: "#0032AB", //입고
         accent: "#0B6ABF", //세컨드 기본컬러
         error: "#FF5252",
@@ -29,7 +29,8 @@ export default new Vuetify({
         delete: "#F06292", // 삭제
         jego: "#FF7510", // 삭제
         sm: "#9264EE", // 삭제
-        gry: "#757575"
+        gry: "#757575",
+        gry2: "#DDD"
       }
     }
   },

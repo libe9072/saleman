@@ -17,10 +17,18 @@
 							<v-row no-gutters>
 								<v-col cols="12"> 김과장 (34M) </v-col>
 								<v-col>
-									<v-btn small color="gry" dark class="mr-1"
+									<v-btn
+										small
+										color="gry"
+										dark
+										class="mr-1"
+										@click="showPasswordChangeLayer = true"
 										>비밀번호 변경</v-btn
 									>
-									<v-btn small color="info"
+									<v-btn
+										small
+										color="info"
+										@click="showBosangLayer001 = true"
 										>담당자 관리</v-btn
 									>
 								</v-col>
@@ -177,13 +185,29 @@
 					</v-row>
 				</v-col>
 			</v-row>
+			<PasswordChangeLayer
+				:showPasswordChangeLayer.sync="showPasswordChangeLayer"
+				:imgData="imgData"
+			/>
+			<BosangLayer001
+				:showBosangLayer001.sync="showBosangLayer001"
+				:imgData="imgData"
+			/>
 		</v-form>
 	</v-card>
 </template>
 <script>
 import axios from "axios";
+import PasswordChangeLayer from "../layer/PasswordChangeLayer";
+import BosangLayer001 from "../layer/BosangLayer001";
 export default {
+	components: {
+		PasswordChangeLayer,
+		BosangLayer001,
+	},
 	data: () => ({
+		showPasswordChangeLayer: false, //첨부이미지 보기 레이어
+		showBosangLayer001: true, //첨부이미지 보기 레이어
 		searchParams: {
 			number: 2, //결합인원(2~5)
 			ratePlanType: 130000, //요금제  가격대
