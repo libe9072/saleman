@@ -1,0 +1,43 @@
+{
+    "fullModal": {
+        "PasswordChangeLayer": {
+            "id": "PasswordChangeLayer",
+            "title": "비밀번호 변경",
+            "nextText": "변경",
+            "nextYn": "Y",
+            "nextIcon": "content-save"
+        },
+        "BosangLayer001": {
+            "id": "BosangLayer001",
+            "title": "기간 보상",
+            "nextText": "적용",
+            "nextYn": "Y",
+            "nextIcon": "content-save"
+        },
+        "BosangLayer002": {
+            "id": "BosangLayer002",
+            "title": "기간보상 처리",
+            "nextText": "확인",
+            "nextYn": "Y",
+            "nextIcon": "content-save"
+        },
+        "MemberManagementLayer": {
+            "id": "MemberManagementLayer",
+            "title": "담당자관리"
+        }
+    },
+    "snackData": {
+        "deal001": {
+            "layer001": {
+                "ok": {
+                    "text": "거래처등록이 완료되었습니다.<br/>추가정보입력페이지로 이동됩니다",
+                    "color": "success"
+                },
+                "fail": {
+                    "text": "거래처구분을 선택해주세요.",
+                    "color": "amber"
+                }
+            }
+        }
+    }
+}

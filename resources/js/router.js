@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Sample from "./components/layout/Sample";
+import Login from "./components/layout/Login";
+import SearchList from "./components/layout/SearchList";
 
 Vue.use(Router)
 
@@ -10,8 +11,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'sample',
-      component: Sample,
+      name: 'Login',
+      component: SearchList,
     },
   ]
 })
