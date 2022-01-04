@@ -112,6 +112,10 @@
 						</v-card>
 					</v-form>
 				</v-container>
+				<BosangLayer002
+					:showBosangLayer002.sync="showBosangLayer002"
+					:imgData="imgData"
+				/>
 			</template>
 		</ModalLayer>
 	</div>
@@ -119,12 +123,14 @@
 
 <script>
 import ModalLayer from "../layout/ModalLayer";
+import BosangLayer002 from "../layer/BosangLayer002";
 import dataProps from "../../assets/dataProps";
 import { commonFunction } from "../mixins/commonFunction";
 export default {
 	name: "BosangLayer001",
 	components: {
 		ModalLayer,
+		BosangLayer002,
 	},
 	props: {
 		showBosangLayer001: {
@@ -150,8 +156,13 @@ export default {
 	data: () => ({
 		topProps: dataProps.fullModal.BosangLayer001,
 		memo: null,
+		showBosangLayer002: false, //첨부이미지 보기 레이어
 	}),
-	methods: {},
+	methods: {
+		nextClick() {
+			this.showBosangLayer002 = true;
+		},
+	},
 	created() {},
 	watch: {},
 	mixins: [commonFunction],

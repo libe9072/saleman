@@ -28,7 +28,9 @@
 									<v-btn
 										small
 										color="info"
-										@click="showBosangLayer001 = true"
+										@click="
+											showMemberManagementLayer = true
+										"
 										>담당자 관리</v-btn
 									>
 								</v-col>
@@ -64,7 +66,7 @@
 						<v-col
 							>검색어 :
 							<v-chip
-								class="ml-1"
+								class="ml-1 mb-1"
 								small
 								close
 								label
@@ -72,7 +74,7 @@
 								>모바일</v-chip
 							>
 							<v-chip
-								class="ml-1"
+								class="ml-1 mb-1"
 								small
 								close
 								label
@@ -80,7 +82,7 @@
 								>apple</v-chip
 							>
 							<v-chip
-								class="ml-1"
+								class="ml-1 mb-1"
 								small
 								close
 								label
@@ -88,7 +90,7 @@
 								>4555</v-chip
 							>
 							<v-chip
-								class="ml-1"
+								class="ml-1 mb-1"
 								small
 								close
 								label
@@ -163,6 +165,11 @@
 												outlined
 												color="gry"
 												x-small
+												@click="
+													MapOpen(
+														'경기 안산시 단원구 광장23로 32,서울빌딩'
+													)
+												"
 												>지도보기</v-btn
 											><br />
 											010-2345-6789, 031-223-<span
@@ -174,6 +181,9 @@
 											<v-btn
 												height="100%"
 												color="secondary"
+												@click="
+													showBosangLayer001 = true
+												"
 											>
 												기간보상
 											</v-btn>
@@ -193,6 +203,14 @@
 				:showBosangLayer001.sync="showBosangLayer001"
 				:imgData="imgData"
 			/>
+			<BosangLayer002
+				:showBosangLayer002.sync="showBosangLayer002"
+				:imgData="imgData"
+			/>
+			<MemberManagementLayer
+				:showMemberManagementLayer.sync="showMemberManagementLayer"
+				:imgData="imgData"
+			/>
 		</v-form>
 	</v-card>
 </template>
@@ -200,14 +218,20 @@
 import axios from "axios";
 import PasswordChangeLayer from "../layer/PasswordChangeLayer";
 import BosangLayer001 from "../layer/BosangLayer001";
+import BosangLayer002 from "../layer/BosangLayer002";
+import MemberManagementLayer from "../layer/MemberManagementLayer";
 export default {
 	components: {
 		PasswordChangeLayer,
 		BosangLayer001,
+		BosangLayer002,
+		MemberManagementLayer,
 	},
 	data: () => ({
 		showPasswordChangeLayer: false, //첨부이미지 보기 레이어
-		showBosangLayer001: true, //첨부이미지 보기 레이어
+		showBosangLayer001: false, //첨부이미지 보기 레이어
+		showBosangLayer002: false, //첨부이미지 보기 레이어
+		showMemberManagementLayer: false, //첨부이미지 보기 레이어
 		searchParams: {
 			number: 2, //결합인원(2~5)
 			ratePlanType: 130000, //요금제  가격대
@@ -223,6 +247,13 @@ export default {
 		resultDatas: [], //결과값
 	}),
 	methods: {
+		MapOpen(val) {
+			let vals = encodeURIComponent(val);
+			window.open(
+				"https://map.naver.com/v5/search/" + vals,
+				"window팝업"
+			);
+		},
 		totalData(type, line) {
 			let plus = "";
 			let i = 0;

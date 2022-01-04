@@ -1949,9 +1949,381 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _layout_ModalLayer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../layout/ModalLayer */ "./resources/js/components/layout/ModalLayer.vue");
+/* harmony import */ var _layer_BosangLayer002__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../layer/BosangLayer002 */ "./resources/js/components/layer/BosangLayer002.vue");
+/* harmony import */ var _assets_dataProps__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../assets/dataProps */ "./resources/js/assets/dataProps.json");
+var _assets_dataProps__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../../assets/dataProps */ "./resources/js/assets/dataProps.json", 1);
+/* harmony import */ var _mixins_commonFunction__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../mixins/commonFunction */ "./resources/js/components/mixins/commonFunction.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "BosangLayer001",
+  components: {
+    ModalLayer: _layout_ModalLayer__WEBPACK_IMPORTED_MODULE_0__["default"],
+    BosangLayer002: _layer_BosangLayer002__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  props: {
+    showBosangLayer001: {
+      "default": false
+    },
+    imgData: {
+      // 조건
+      "default": []
+    }
+  },
+  computed: {
+    showFullModal: {
+      get: function get() {
+        if (this.showBosangLayer001 === true) {}
+
+        return this.showBosangLayer001;
+      },
+      set: function set(value) {
+        this.$emit("update:showBosangLayer001", value);
+      }
+    }
+  },
+  data: function data() {
+    return {
+      topProps: _assets_dataProps__WEBPACK_IMPORTED_MODULE_2__.fullModal.BosangLayer001,
+      memo: null,
+      showBosangLayer002: false //첨부이미지 보기 레이어
+
+    };
+  },
+  methods: {
+    nextClick: function nextClick() {
+      this.showBosangLayer002 = true;
+    }
+  },
+  created: function created() {},
+  watch: {},
+  mixins: [_mixins_commonFunction__WEBPACK_IMPORTED_MODULE_3__["commonFunction"]]
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layer/BosangLayer002.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vuetify-loader/lib/loader.js??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layer/BosangLayer002.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _layout_ModalLayer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../layout/ModalLayer */ "./resources/js/components/layout/ModalLayer.vue");
 /* harmony import */ var _assets_dataProps__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../assets/dataProps */ "./resources/js/assets/dataProps.json");
 var _assets_dataProps__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../../assets/dataProps */ "./resources/js/assets/dataProps.json", 1);
 /* harmony import */ var _mixins_commonFunction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mixins/commonFunction */ "./resources/js/components/mixins/commonFunction.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "BosangLayer002",
+  components: {
+    ModalLayer: _layout_ModalLayer__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  props: {
+    showBosangLayer002: {
+      "default": false
+    },
+    imgData: {
+      // 조건
+      "default": []
+    }
+  },
+  computed: {
+    showFullModal: {
+      get: function get() {
+        if (this.showBosangLayer002 === true) {}
+
+        return this.showBosangLayer002;
+      },
+      set: function set(value) {
+        this.$emit("update:showBosangLayer002", value);
+      }
+    }
+  },
+  data: function data() {
+    return {
+      topProps: _assets_dataProps__WEBPACK_IMPORTED_MODULE_1__.fullModal.BosangLayer002,
+      memo: null
+    };
+  },
+  methods: {},
+  created: function created() {},
+  watch: {},
+  mixins: [_mixins_commonFunction__WEBPACK_IMPORTED_MODULE_2__["commonFunction"]]
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layer/MemberManagementLayer.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vuetify-loader/lib/loader.js??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layer/MemberManagementLayer.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _layout_ModalLayer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../layout/ModalLayer */ "./resources/js/components/layout/ModalLayer.vue");
+/* harmony import */ var _assets_dataProps__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../assets/dataProps */ "./resources/js/assets/dataProps.json");
+var _assets_dataProps__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../../assets/dataProps */ "./resources/js/assets/dataProps.json", 1);
+/* harmony import */ var _mixins_commonFunction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mixins/commonFunction */ "./resources/js/components/mixins/commonFunction.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2075,12 +2447,12 @@ var _assets_dataProps__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__we
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "BosangLayer001",
+  name: "MemberManagementLayer",
   components: {
     ModalLayer: _layout_ModalLayer__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    showBosangLayer001: {
+    showMemberManagementLayer: {
       "default": false
     },
     imgData: {
@@ -2091,18 +2463,18 @@ var _assets_dataProps__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__we
   computed: {
     showFullModal: {
       get: function get() {
-        if (this.showBosangLayer001 === true) {}
+        if (this.showMemberManagementLayer === true) {}
 
-        return this.showBosangLayer001;
+        return this.showMemberManagementLayer;
       },
       set: function set(value) {
-        this.$emit("update:showBosangLayer001", value);
+        this.$emit("update:showMemberManagementLayer", value);
       }
     }
   },
   data: function data() {
     return {
-      topProps: _assets_dataProps__WEBPACK_IMPORTED_MODULE_1__.fullModal.BosangLayer001,
+      topProps: _assets_dataProps__WEBPACK_IMPORTED_MODULE_1__.fullModal.MemberManagementLayer,
       memo: null
     };
   },
@@ -2505,6 +2877,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _layer_PasswordChangeLayer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../layer/PasswordChangeLayer */ "./resources/js/components/layer/PasswordChangeLayer.vue");
 /* harmony import */ var _layer_BosangLayer001__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../layer/BosangLayer001 */ "./resources/js/components/layer/BosangLayer001.vue");
+/* harmony import */ var _layer_BosangLayer002__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../layer/BosangLayer002 */ "./resources/js/components/layer/BosangLayer002.vue");
+/* harmony import */ var _layer_MemberManagementLayer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../layer/MemberManagementLayer */ "./resources/js/components/layer/MemberManagementLayer.vue");
 //
 //
 //
@@ -2703,19 +3077,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     PasswordChangeLayer: _layer_PasswordChangeLayer__WEBPACK_IMPORTED_MODULE_1__["default"],
-    BosangLayer001: _layer_BosangLayer001__WEBPACK_IMPORTED_MODULE_2__["default"]
+    BosangLayer001: _layer_BosangLayer001__WEBPACK_IMPORTED_MODULE_2__["default"],
+    BosangLayer002: _layer_BosangLayer002__WEBPACK_IMPORTED_MODULE_3__["default"],
+    MemberManagementLayer: _layer_MemberManagementLayer__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   data: function data() {
     return {
       showPasswordChangeLayer: false,
       //첨부이미지 보기 레이어
-      showBosangLayer001: true,
+      showBosangLayer001: false,
+      //첨부이미지 보기 레이어
+      showBosangLayer002: false,
+      //첨부이미지 보기 레이어
+      showMemberManagementLayer: false,
       //첨부이미지 보기 레이어
       searchParams: {
         number: 2,
@@ -2739,6 +3139,10 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    MapOpen: function MapOpen(val) {
+      var vals = encodeURIComponent(val);
+      window.open("https://map.naver.com/v5/search/" + vals, "window팝업");
+    },
     totalData: function totalData(type, line) {
       var _this = this;
 
@@ -2790,6 +3194,17 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {},
   computed: {}
 });
+
+/***/ }),
+
+/***/ "./node_modules/extract-text-webpack-plugin/dist/loader.js?!./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layer/MemberManagementLayer.vue?vue&type=style&index=0&id=ab9f6f0a&scoped=true&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/extract-text-webpack-plugin/dist/loader.js??ref--6-0!./node_modules/style-loader!./node_modules/css-loader??ref--6-2!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-3!./node_modules/vuetify-loader/lib/loader.js??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layer/MemberManagementLayer.vue?vue&type=style&index=0&id=ab9f6f0a&scoped=true&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
@@ -3676,6 +4091,736 @@ var render = function() {
                     )
                   ],
                   1
+                ),
+                _vm._v(" "),
+                _c("BosangLayer002", {
+                  attrs: {
+                    showBosangLayer002: _vm.showBosangLayer002,
+                    imgData: _vm.imgData
+                  },
+                  on: {
+                    "update:showBosangLayer002": function($event) {
+                      _vm.showBosangLayer002 = $event
+                    },
+                    "update:show-bosang-layer002": function($event) {
+                      _vm.showBosangLayer002 = $event
+                    }
+                  }
+                })
+              ]
+            },
+            proxy: true
+          }
+        ])
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layer/BosangLayer002.vue?vue&type=template&id=13863d9e&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vuetify-loader/lib/loader.js??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layer/BosangLayer002.vue?vue&type=template&id=13863d9e& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("ModalLayer", {
+        attrs: { visible: _vm.showFullModal, topProps: _vm.topProps },
+        on: {
+          closed: function($event) {
+            _vm.showFullModal = false
+          },
+          nextClick: _vm.nextClick
+        },
+        scopedSlots: _vm._u([
+          {
+            key: "viewContent",
+            fn: function() {
+              return [
+                _c(
+                  "v-container",
+                  [
+                    _c(
+                      "v-form",
+                      [
+                        _c(
+                          "v-card",
+                          { staticClass: "pa-2" },
+                          [
+                            _c(
+                              "v-row",
+                              {
+                                staticClass: "text-center",
+                                attrs: { "no-gutters": "" }
+                              },
+                              [
+                                _c(
+                                  "v-col",
+                                  {
+                                    staticClass:
+                                      "text-center font-weight-bold my-2",
+                                    attrs: { cols: "12" }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n\t\t\t\t\t\t\t\t주식회사 애플모바일"
+                                    ),
+                                    _c("br"),
+                                    _vm._v(
+                                      "\n\t\t\t\t\t\t\t\tbsc562apple\n\t\t\t\t\t\t\t"
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-col",
+                                  {
+                                    staticClass: "my-2",
+                                    attrs: { cols: "12" }
+                                  },
+                                  [
+                                    _vm._v("\n\t\t\t\t\t\t\t\t+3M +17D"),
+                                    _c("br"),
+                                    _vm._v(
+                                      "\n\t\t\t\t\t\t\t\t장기 선결재 보상건\n\t\t\t\t\t\t\t"
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-col",
+                                  {
+                                    staticClass: "text-center my-2",
+                                    attrs: { cols: "12" }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n\t\t\t\t\t\t\t\t보상전 : 2022/12/31 (D-287)"
+                                    ),
+                                    _c("br"),
+                                    _vm._v(
+                                      "\n\t\t\t\t\t\t\t\t보상후 : 2023/06/30 (D-542)\n\t\t\t\t\t\t\t"
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-col",
+                                  {
+                                    staticClass: "error--text",
+                                    attrs: { cols: "12" }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n\t\t\t\t\t\t\t\t안되요 안되요\n\t\t\t\t\t\t\t"
+                                    )
+                                  ]
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ]
+            },
+            proxy: true
+          }
+        ])
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layer/MemberManagementLayer.vue?vue&type=template&id=ab9f6f0a&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vuetify-loader/lib/loader.js??ref--11-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layer/MemberManagementLayer.vue?vue&type=template&id=ab9f6f0a&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("ModalLayer", {
+        attrs: { visible: _vm.showFullModal, topProps: _vm.topProps },
+        on: {
+          closed: function($event) {
+            _vm.showFullModal = false
+          },
+          nextClick: _vm.nextClick
+        },
+        scopedSlots: _vm._u([
+          {
+            key: "viewContent",
+            fn: function() {
+              return [
+                _c(
+                  "v-container",
+                  [
+                    _c(
+                      "v-form",
+                      [
+                        _c(
+                          "v-card",
+                          { staticClass: "pa-2" },
+                          [
+                            _c(
+                              "v-row",
+                              { attrs: { "no-gutters": "" } },
+                              [
+                                _c(
+                                  "v-col",
+                                  { attrs: { cols: "12" } },
+                                  [
+                                    _c(
+                                      "v-row",
+                                      { attrs: { "no-gutters": "" } },
+                                      [
+                                        _c(
+                                          "v-col",
+                                          { staticClass: "pr-3" },
+                                          [
+                                            _c("v-text-field", {
+                                              attrs: {
+                                                placeholder: "이름",
+                                                label: "이름",
+                                                "hide-details": ""
+                                              },
+                                              model: {
+                                                value: _vm.sm_name,
+                                                callback: function($$v) {
+                                                  _vm.sm_name = $$v
+                                                },
+                                                expression: "sm_name"
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            _c("v-text-field", {
+                                              attrs: {
+                                                placeholder: "연락처",
+                                                label: "연락처",
+                                                "hide-details": ""
+                                              },
+                                              model: {
+                                                value: _vm.sm_phone,
+                                                callback: function($$v) {
+                                                  _vm.sm_phone = $$v
+                                                },
+                                                expression: "sm_phone"
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            _c("v-text-field", {
+                                              attrs: {
+                                                placeholder: "소속/회사",
+                                                label: "소속/회사",
+                                                "hide-details": ""
+                                              },
+                                              model: {
+                                                value: _vm.sm_password,
+                                                callback: function($$v) {
+                                                  _vm.sm_password = $$v
+                                                },
+                                                expression: "sm_password"
+                                              }
+                                            })
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-col",
+                                          { attrs: { cols: "5", md: "3" } },
+                                          [
+                                            _c(
+                                              "v-row",
+                                              { attrs: { "no-gutters": "" } },
+                                              [
+                                                _c(
+                                                  "v-col",
+                                                  {
+                                                    staticClass: "mb-2",
+                                                    attrs: { cols: "12" }
+                                                  },
+                                                  [
+                                                    _c("v-checkbox", {
+                                                      attrs: {
+                                                        label: "관리자",
+                                                        "hide-details": ""
+                                                      },
+                                                      model: {
+                                                        value: _vm.checkbox,
+                                                        callback: function(
+                                                          $$v
+                                                        ) {
+                                                          _vm.checkbox = $$v
+                                                        },
+                                                        expression: "checkbox"
+                                                      }
+                                                    })
+                                                  ],
+                                                  1
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "v-col",
+                                                  [
+                                                    _c(
+                                                      "v-btn",
+                                                      {
+                                                        attrs: {
+                                                          color: "secondary",
+                                                          height: "95",
+                                                          block: ""
+                                                        }
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "\n\t\t\t\t\t\t\t\t\t\t\t\t\t신규등록"
+                                                        )
+                                                      ]
+                                                    )
+                                                  ],
+                                                  1
+                                                )
+                                              ],
+                                              1
+                                            )
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-col",
+                                          {
+                                            staticClass: "mt-2 mb-2",
+                                            attrs: { cols: "12" }
+                                          },
+                                          [
+                                            _c("v-textarea", {
+                                              attrs: {
+                                                label: "memo",
+                                                solo: "",
+                                                placeholder:
+                                                  "메모 내용을 입력하세요",
+                                                "auto-grow": "",
+                                                "hide-details": "",
+                                                rows: "1"
+                                              },
+                                              model: {
+                                                value: _vm.memo,
+                                                callback: function($$v) {
+                                                  _vm.memo = $$v
+                                                },
+                                                expression: "memo"
+                                              }
+                                            })
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-col",
+                                  {
+                                    staticClass: "my-2",
+                                    attrs: { cols: "12" }
+                                  },
+                                  _vm._l(5, function(x) {
+                                    return _c(
+                                      "v-card",
+                                      {
+                                        key: x,
+                                        staticClass: "my-1 pa-2",
+                                        attrs: { disabled: x % 2 === 1 }
+                                      },
+                                      [
+                                        _c("v-hover", {
+                                          scopedSlots: _vm._u(
+                                            [
+                                              {
+                                                key: "default",
+                                                fn: function(ref) {
+                                                  var hover = ref.hover
+                                                  return _c(
+                                                    "v-row",
+                                                    {
+                                                      class:
+                                                        "" +
+                                                        (hover
+                                                          ? "class1"
+                                                          : "class2"),
+                                                      attrs: {
+                                                        "no-gutters": ""
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "v-col",
+                                                        {
+                                                          staticClass:
+                                                            "mx-2 body-2",
+                                                          attrs: {
+                                                            "align-self":
+                                                              "center",
+                                                            cols: "auto"
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            "\n\t\t\t\t\t\t\t\t\t\t\t\t7\n\t\t\t\t\t\t\t\t\t\t\t"
+                                                          )
+                                                        ]
+                                                      ),
+                                                      _vm._v(" "),
+                                                      _c(
+                                                        "v-col",
+                                                        [
+                                                          _c(
+                                                            "v-row",
+                                                            {
+                                                              staticClass:
+                                                                "pr-2",
+                                                              attrs: {
+                                                                "no-gutters": ""
+                                                              }
+                                                            },
+                                                            [
+                                                              _c(
+                                                                "v-col",
+                                                                {
+                                                                  staticClass:
+                                                                    "pr-3"
+                                                                },
+                                                                [
+                                                                  _c(
+                                                                    "v-text-field",
+                                                                    {
+                                                                      attrs: {
+                                                                        placeholder:
+                                                                          "이름",
+                                                                        label:
+                                                                          "이름",
+                                                                        "hide-details":
+                                                                          ""
+                                                                      },
+                                                                      model: {
+                                                                        value:
+                                                                          _vm.sm_name,
+                                                                        callback: function(
+                                                                          $$v
+                                                                        ) {
+                                                                          _vm.sm_name = $$v
+                                                                        },
+                                                                        expression:
+                                                                          "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tsm_name\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
+                                                                      }
+                                                                    }
+                                                                  ),
+                                                                  _vm._v(" "),
+                                                                  _c(
+                                                                    "v-text-field",
+                                                                    {
+                                                                      attrs: {
+                                                                        placeholder:
+                                                                          "연락처",
+                                                                        label:
+                                                                          "연락처",
+                                                                        "hide-details":
+                                                                          ""
+                                                                      },
+                                                                      model: {
+                                                                        value:
+                                                                          _vm.sm_phone,
+                                                                        callback: function(
+                                                                          $$v
+                                                                        ) {
+                                                                          _vm.sm_phone = $$v
+                                                                        },
+                                                                        expression:
+                                                                          "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tsm_phone\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
+                                                                      }
+                                                                    }
+                                                                  ),
+                                                                  _vm._v(" "),
+                                                                  _c(
+                                                                    "v-text-field",
+                                                                    {
+                                                                      attrs: {
+                                                                        placeholder:
+                                                                          "소속/회사",
+                                                                        label:
+                                                                          "소속/회사",
+                                                                        "hide-details":
+                                                                          ""
+                                                                      },
+                                                                      model: {
+                                                                        value:
+                                                                          _vm.sm_password,
+                                                                        callback: function(
+                                                                          $$v
+                                                                        ) {
+                                                                          _vm.sm_password = $$v
+                                                                        },
+                                                                        expression:
+                                                                          "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tsm_password\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
+                                                                      }
+                                                                    }
+                                                                  )
+                                                                ],
+                                                                1
+                                                              ),
+                                                              _vm._v(" "),
+                                                              _c(
+                                                                "v-col",
+                                                                {
+                                                                  attrs: {
+                                                                    cols: "5",
+                                                                    md: "3"
+                                                                  }
+                                                                },
+                                                                [
+                                                                  _c(
+                                                                    "v-row",
+                                                                    {
+                                                                      attrs: {
+                                                                        "no-gutters":
+                                                                          ""
+                                                                      }
+                                                                    },
+                                                                    [
+                                                                      _c(
+                                                                        "v-col",
+                                                                        {
+                                                                          attrs: {
+                                                                            cols:
+                                                                              "12"
+                                                                          }
+                                                                        },
+                                                                        [
+                                                                          _c(
+                                                                            "v-checkbox",
+                                                                            {
+                                                                              attrs: {
+                                                                                label:
+                                                                                  "관리자",
+                                                                                "hide-details":
+                                                                                  ""
+                                                                              },
+                                                                              model: {
+                                                                                value:
+                                                                                  _vm.checkbox,
+                                                                                callback: function(
+                                                                                  $$v
+                                                                                ) {
+                                                                                  _vm.checkbox = $$v
+                                                                                },
+                                                                                expression:
+                                                                                  "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tcheckbox\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
+                                                                              }
+                                                                            }
+                                                                          )
+                                                                        ],
+                                                                        1
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-col",
+                                                                        {
+                                                                          attrs: {
+                                                                            cols:
+                                                                              "12"
+                                                                          }
+                                                                        },
+                                                                        [
+                                                                          _c(
+                                                                            "v-text-field",
+                                                                            {
+                                                                              attrs: {
+                                                                                solo:
+                                                                                  "",
+                                                                                "hide-details":
+                                                                                  "",
+                                                                                suffix:
+                                                                                  "M"
+                                                                              },
+                                                                              model: {
+                                                                                value:
+                                                                                  _vm.sm_name,
+                                                                                callback: function(
+                                                                                  $$v
+                                                                                ) {
+                                                                                  _vm.sm_name = $$v
+                                                                                },
+                                                                                expression:
+                                                                                  "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tsm_name\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"
+                                                                              }
+                                                                            }
+                                                                          )
+                                                                        ],
+                                                                        1
+                                                                      ),
+                                                                      _vm._v(
+                                                                        " "
+                                                                      ),
+                                                                      _c(
+                                                                        "v-col",
+                                                                        {
+                                                                          staticClass:
+                                                                            "mt-1"
+                                                                        },
+                                                                        [
+                                                                          _c(
+                                                                            "v-btn",
+                                                                            {
+                                                                              attrs: {
+                                                                                color:
+                                                                                  "info",
+                                                                                block:
+                                                                                  "",
+                                                                                height:
+                                                                                  "50"
+                                                                              }
+                                                                            },
+                                                                            [
+                                                                              _vm._v(
+                                                                                "\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t수정"
+                                                                              )
+                                                                            ]
+                                                                          )
+                                                                        ],
+                                                                        1
+                                                                      )
+                                                                    ],
+                                                                    1
+                                                                  )
+                                                                ],
+                                                                1
+                                                              ),
+                                                              _vm._v(" "),
+                                                              _c(
+                                                                "v-col",
+                                                                {
+                                                                  staticClass:
+                                                                    "mt-2 mb-2",
+                                                                  attrs: {
+                                                                    cols: "12"
+                                                                  }
+                                                                },
+                                                                [
+                                                                  _c(
+                                                                    "v-textarea",
+                                                                    {
+                                                                      attrs: {
+                                                                        label:
+                                                                          "memo",
+                                                                        solo:
+                                                                          "",
+                                                                        placeholder:
+                                                                          "메모 내용을 입력하세요",
+                                                                        "auto-grow":
+                                                                          "",
+                                                                        "hide-details":
+                                                                          "",
+                                                                        rows:
+                                                                          "1"
+                                                                      },
+                                                                      model: {
+                                                                        value:
+                                                                          _vm.memo,
+                                                                        callback: function(
+                                                                          $$v
+                                                                        ) {
+                                                                          _vm.memo = $$v
+                                                                        },
+                                                                        expression:
+                                                                          "memo"
+                                                                      }
+                                                                    }
+                                                                  )
+                                                                ],
+                                                                1
+                                                              )
+                                                            ],
+                                                            1
+                                                          )
+                                                        ],
+                                                        1
+                                                      )
+                                                    ],
+                                                    1
+                                                  )
+                                                }
+                                              }
+                                            ],
+                                            null,
+                                            true
+                                          )
+                                        })
+                                      ],
+                                      1
+                                    )
+                                  }),
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
                 )
               ]
             },
@@ -4160,7 +5305,7 @@ var render = function() {
                                       attrs: { small: "", color: "info" },
                                       on: {
                                         click: function($event) {
-                                          _vm.showBosangLayer001 = true
+                                          _vm.showMemberManagementLayer = true
                                         }
                                       }
                                     },
@@ -4259,7 +5404,7 @@ var render = function() {
                           _c(
                             "v-chip",
                             {
-                              staticClass: "ml-1",
+                              staticClass: "ml-1 mb-1",
                               attrs: {
                                 small: "",
                                 close: "",
@@ -4273,7 +5418,7 @@ var render = function() {
                           _c(
                             "v-chip",
                             {
-                              staticClass: "ml-1",
+                              staticClass: "ml-1 mb-1",
                               attrs: {
                                 small: "",
                                 close: "",
@@ -4287,7 +5432,7 @@ var render = function() {
                           _c(
                             "v-chip",
                             {
-                              staticClass: "ml-1",
+                              staticClass: "ml-1 mb-1",
                               attrs: {
                                 small: "",
                                 close: "",
@@ -4301,7 +5446,7 @@ var render = function() {
                           _c(
                             "v-chip",
                             {
-                              staticClass: "ml-1",
+                              staticClass: "ml-1 mb-1",
                               attrs: {
                                 small: "",
                                 close: "",
@@ -4496,6 +5641,13 @@ var render = function() {
                                                       outlined: "",
                                                       color: "gry",
                                                       "x-small": ""
+                                                    },
+                                                    on: {
+                                                      click: function($event) {
+                                                        return _vm.MapOpen(
+                                                          "경기 안산시 단원구 광장23로 32,서울빌딩"
+                                                        )
+                                                      }
                                                     }
                                                   },
                                                   [_vm._v("지도보기")]
@@ -4529,6 +5681,11 @@ var render = function() {
                                                     attrs: {
                                                       height: "100%",
                                                       color: "secondary"
+                                                    },
+                                                    on: {
+                                                      click: function($event) {
+                                                        _vm.showBosangLayer001 = true
+                                                      }
                                                     }
                                                   },
                                                   [
@@ -4592,6 +5749,36 @@ var render = function() {
               },
               "update:show-bosang-layer001": function($event) {
                 _vm.showBosangLayer001 = $event
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("BosangLayer002", {
+            attrs: {
+              showBosangLayer002: _vm.showBosangLayer002,
+              imgData: _vm.imgData
+            },
+            on: {
+              "update:showBosangLayer002": function($event) {
+                _vm.showBosangLayer002 = $event
+              },
+              "update:show-bosang-layer002": function($event) {
+                _vm.showBosangLayer002 = $event
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("MemberManagementLayer", {
+            attrs: {
+              showMemberManagementLayer: _vm.showMemberManagementLayer,
+              imgData: _vm.imgData
+            },
+            on: {
+              "update:showMemberManagementLayer": function($event) {
+                _vm.showMemberManagementLayer = $event
+              },
+              "update:show-member-management-layer": function($event) {
+                _vm.showMemberManagementLayer = $event
               }
             }
           })
@@ -60833,7 +62020,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
 /*! exports provided: fullModal, snackData, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"fullModal\":{\"PasswordChangeLayer\":{\"id\":\"PasswordChangeLayer\",\"title\":\"비밀번호 변경\",\"nextText\":\"변경\",\"nextYn\":\"Y\",\"nextIcon\":\"content-save\"},\"BosangLayer001\":{\"id\":\"BosangLayer001\",\"title\":\"기간 보상\",\"nextText\":\"적용\",\"nextYn\":\"Y\",\"nextIcon\":\"content-save\"},\"BosangLayer002\":{\"id\":\"BosangLayer002\",\"title\":\"기간보상 처리\",\"nextText\":\"적용\",\"nextYn\":\"Y\",\"nextIcon\":\"content-save\"},\"MemberManagementLayer\":{\"id\":\"MemberManagementLayer\",\"title\":\"담당자관리\"}},\"snackData\":{\"deal001\":{\"layer001\":{\"ok\":{\"text\":\"거래처등록이 완료되었습니다.<br/>추가정보입력페이지로 이동됩니다\",\"color\":\"success\"},\"fail\":{\"text\":\"거래처구분을 선택해주세요.\",\"color\":\"amber\"}}}}}");
+module.exports = JSON.parse("{\"fullModal\":{\"PasswordChangeLayer\":{\"id\":\"PasswordChangeLayer\",\"title\":\"비밀번호 변경\",\"nextText\":\"변경\",\"nextYn\":\"Y\",\"nextIcon\":\"content-save\"},\"BosangLayer001\":{\"id\":\"BosangLayer001\",\"title\":\"기간 보상\",\"nextText\":\"적용\",\"nextYn\":\"Y\",\"nextIcon\":\"content-save\"},\"BosangLayer002\":{\"id\":\"BosangLayer002\",\"title\":\"기간보상 처리\",\"nextText\":\"확인\",\"nextYn\":\"Y\",\"nextIcon\":\"content-save\"},\"MemberManagementLayer\":{\"id\":\"MemberManagementLayer\",\"title\":\"담당자관리\"}},\"snackData\":{\"deal001\":{\"layer001\":{\"ok\":{\"text\":\"거래처등록이 완료되었습니다.<br/>추가정보입력페이지로 이동됩니다\",\"color\":\"success\"},\"fail\":{\"text\":\"거래처구분을 선택해주세요.\",\"color\":\"amber\"}}}}}");
 
 /***/ }),
 
@@ -60926,6 +62113,202 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BosangLayer001_vue_vue_type_template_id_1378261d___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BosangLayer001_vue_vue_type_template_id_1378261d___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/layer/BosangLayer002.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/layer/BosangLayer002.vue ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _BosangLayer002_vue_vue_type_template_id_13863d9e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BosangLayer002.vue?vue&type=template&id=13863d9e& */ "./resources/js/components/layer/BosangLayer002.vue?vue&type=template&id=13863d9e&");
+/* harmony import */ var _BosangLayer002_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BosangLayer002.vue?vue&type=script&lang=js& */ "./resources/js/components/layer/BosangLayer002.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vuetify-loader/lib/runtime/installComponents.js */ "./node_modules/vuetify-loader/lib/runtime/installComponents.js");
+/* harmony import */ var _node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuetify/lib/components/VCard */ "./node_modules/vuetify/lib/components/VCard/index.js");
+/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/index.js");
+/* harmony import */ var vuetify_lib_components_VForm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuetify/lib/components/VForm */ "./node_modules/vuetify/lib/components/VForm/index.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _BosangLayer002_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _BosangLayer002_vue_vue_type_template_id_13863d9e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _BosangLayer002_vue_vue_type_template_id_13863d9e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* vuetify-loader */
+
+
+
+
+
+
+_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_3___default()(component, {VCard: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_4__["VCard"],VCol: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_5__["VCol"],VContainer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_5__["VContainer"],VForm: vuetify_lib_components_VForm__WEBPACK_IMPORTED_MODULE_6__["VForm"],VRow: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_5__["VRow"]})
+
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/layer/BosangLayer002.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/layer/BosangLayer002.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/layer/BosangLayer002.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BosangLayer002_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vuetify-loader/lib/loader.js??ref--11-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./BosangLayer002.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layer/BosangLayer002.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BosangLayer002_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/layer/BosangLayer002.vue?vue&type=template&id=13863d9e&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/layer/BosangLayer002.vue?vue&type=template&id=13863d9e& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BosangLayer002_vue_vue_type_template_id_13863d9e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vuetify-loader/lib/loader.js??ref--11-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./BosangLayer002.vue?vue&type=template&id=13863d9e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layer/BosangLayer002.vue?vue&type=template&id=13863d9e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BosangLayer002_vue_vue_type_template_id_13863d9e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BosangLayer002_vue_vue_type_template_id_13863d9e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/layer/MemberManagementLayer.vue":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/layer/MemberManagementLayer.vue ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _MemberManagementLayer_vue_vue_type_template_id_ab9f6f0a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MemberManagementLayer.vue?vue&type=template&id=ab9f6f0a&scoped=true& */ "./resources/js/components/layer/MemberManagementLayer.vue?vue&type=template&id=ab9f6f0a&scoped=true&");
+/* harmony import */ var _MemberManagementLayer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MemberManagementLayer.vue?vue&type=script&lang=js& */ "./resources/js/components/layer/MemberManagementLayer.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _MemberManagementLayer_vue_vue_type_style_index_0_id_ab9f6f0a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MemberManagementLayer.vue?vue&type=style&index=0&id=ab9f6f0a&scoped=true&lang=css& */ "./resources/js/components/layer/MemberManagementLayer.vue?vue&type=style&index=0&id=ab9f6f0a&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../node_modules/vuetify-loader/lib/runtime/installComponents.js */ "./node_modules/vuetify-loader/lib/runtime/installComponents.js");
+/* harmony import */ var _node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuetify/lib/components/VBtn */ "./node_modules/vuetify/lib/components/VBtn/index.js");
+/* harmony import */ var vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuetify/lib/components/VCard */ "./node_modules/vuetify/lib/components/VCard/index.js");
+/* harmony import */ var vuetify_lib_components_VCheckbox__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vuetify/lib/components/VCheckbox */ "./node_modules/vuetify/lib/components/VCheckbox/index.js");
+/* harmony import */ var vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vuetify/lib/components/VGrid */ "./node_modules/vuetify/lib/components/VGrid/index.js");
+/* harmony import */ var vuetify_lib_components_VForm__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vuetify/lib/components/VForm */ "./node_modules/vuetify/lib/components/VForm/index.js");
+/* harmony import */ var vuetify_lib_components_VHover__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vuetify/lib/components/VHover */ "./node_modules/vuetify/lib/components/VHover/index.js");
+/* harmony import */ var vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vuetify/lib/components/VTextField */ "./node_modules/vuetify/lib/components/VTextField/index.js");
+/* harmony import */ var vuetify_lib_components_VTextarea__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vuetify/lib/components/VTextarea */ "./node_modules/vuetify/lib/components/VTextarea/index.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _MemberManagementLayer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _MemberManagementLayer_vue_vue_type_template_id_ab9f6f0a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _MemberManagementLayer_vue_vue_type_template_id_ab9f6f0a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "ab9f6f0a",
+  null
+  
+)
+
+/* vuetify-loader */
+
+
+
+
+
+
+
+
+
+
+
+_node_modules_vuetify_loader_lib_runtime_installComponents_js__WEBPACK_IMPORTED_MODULE_4___default()(component, {VBtn: vuetify_lib_components_VBtn__WEBPACK_IMPORTED_MODULE_5__["VBtn"],VCard: vuetify_lib_components_VCard__WEBPACK_IMPORTED_MODULE_6__["VCard"],VCheckbox: vuetify_lib_components_VCheckbox__WEBPACK_IMPORTED_MODULE_7__["VCheckbox"],VCol: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_8__["VCol"],VContainer: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_8__["VContainer"],VForm: vuetify_lib_components_VForm__WEBPACK_IMPORTED_MODULE_9__["VForm"],VHover: vuetify_lib_components_VHover__WEBPACK_IMPORTED_MODULE_10__["VHover"],VRow: vuetify_lib_components_VGrid__WEBPACK_IMPORTED_MODULE_8__["VRow"],VTextField: vuetify_lib_components_VTextField__WEBPACK_IMPORTED_MODULE_11__["VTextField"],VTextarea: vuetify_lib_components_VTextarea__WEBPACK_IMPORTED_MODULE_12__["VTextarea"]})
+
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/layer/MemberManagementLayer.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/layer/MemberManagementLayer.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/layer/MemberManagementLayer.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberManagementLayer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vuetify-loader/lib/loader.js??ref--11-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./MemberManagementLayer.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layer/MemberManagementLayer.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberManagementLayer_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/layer/MemberManagementLayer.vue?vue&type=style&index=0&id=ab9f6f0a&scoped=true&lang=css&":
+/*!**************************************************************************************************************************!*\
+  !*** ./resources/js/components/layer/MemberManagementLayer.vue?vue&type=style&index=0&id=ab9f6f0a&scoped=true&lang=css& ***!
+  \**************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_extract_text_webpack_plugin_dist_loader_js_ref_6_0_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_2_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_3_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberManagementLayer_vue_vue_type_style_index_0_id_ab9f6f0a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/extract-text-webpack-plugin/dist/loader.js??ref--6-0!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-2!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-3!../../../../node_modules/vuetify-loader/lib/loader.js??ref--11-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./MemberManagementLayer.vue?vue&type=style&index=0&id=ab9f6f0a&scoped=true&lang=css& */ "./node_modules/extract-text-webpack-plugin/dist/loader.js?!./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layer/MemberManagementLayer.vue?vue&type=style&index=0&id=ab9f6f0a&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_extract_text_webpack_plugin_dist_loader_js_ref_6_0_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_2_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_3_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberManagementLayer_vue_vue_type_style_index_0_id_ab9f6f0a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_extract_text_webpack_plugin_dist_loader_js_ref_6_0_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_2_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_3_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberManagementLayer_vue_vue_type_style_index_0_id_ab9f6f0a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_extract_text_webpack_plugin_dist_loader_js_ref_6_0_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_2_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_3_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberManagementLayer_vue_vue_type_style_index_0_id_ab9f6f0a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_extract_text_webpack_plugin_dist_loader_js_ref_6_0_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_2_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_3_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberManagementLayer_vue_vue_type_style_index_0_id_ab9f6f0a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_extract_text_webpack_plugin_dist_loader_js_ref_6_0_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_2_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_3_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberManagementLayer_vue_vue_type_style_index_0_id_ab9f6f0a_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/layer/MemberManagementLayer.vue?vue&type=template&id=ab9f6f0a&scoped=true&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/components/layer/MemberManagementLayer.vue?vue&type=template&id=ab9f6f0a&scoped=true& ***!
+  \************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberManagementLayer_vue_vue_type_template_id_ab9f6f0a_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vuetify-loader/lib/loader.js??ref--11-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./MemberManagementLayer.vue?vue&type=template&id=ab9f6f0a&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vuetify-loader/lib/loader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layer/MemberManagementLayer.vue?vue&type=template&id=ab9f6f0a&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberManagementLayer_vue_vue_type_template_id_ab9f6f0a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vuetify_loader_lib_loader_js_ref_11_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MemberManagementLayer_vue_vue_type_template_id_ab9f6f0a_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

@@ -17,7 +17,7 @@
         "BosangLayer002": {
             "id": "BosangLayer002",
             "title": "기간보상 처리",
-            "nextText": "적용",
+            "nextText": "확인",
             "nextYn": "Y",
             "nextIcon": "content-save"
         },
