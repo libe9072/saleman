@@ -38,7 +38,12 @@
 							</v-text-field>
 						</v-col>
 						<v-col cols="3">
-							<v-btn color="secondary" height="100%" block>
+							<v-btn
+								color="secondary"
+								height="100%"
+								block
+								to="/searchlist"
+							>
 								로그인</v-btn
 							>
 						</v-col>

@@ -2651,6 +2651,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -5048,7 +5053,8 @@ var render = function() {
                               attrs: {
                                 color: "secondary",
                                 height: "100%",
-                                block: ""
+                                block: "",
+                                to: "/searchlist"
                               }
                             },
                             [_vm._v("\n\t\t\t\t\t\t\t로그인")]
@@ -62902,6 +62908,10 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
   routes: [{
     path: '/',
     name: 'Login',
+    component: _components_layout_Login__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }, {
+    path: '/searchlist',
+    name: 'SearchList',
     component: _components_layout_SearchList__WEBPACK_IMPORTED_MODULE_3__["default"]
   }]
 }));
