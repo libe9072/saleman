@@ -61,6 +61,7 @@
 </template>
 <script>
 import axios from "axios";
+import { Auth } from "../../api";
 export default {
 	data: () => ({
 		sm_name: null,
