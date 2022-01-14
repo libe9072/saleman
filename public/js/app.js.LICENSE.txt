@@ -5,13 +5,6 @@
   */
 
 /*!
- * Chart.js v2.9.3
- * https://www.chartjs.org
- * (c) 2019 Chart.js Contributors
- * Released under the MIT License
- */
-
-/*!
  * Vue.js v2.6.12
  * (c) 2014-2020 Evan You
  * Released under the MIT License.
@@ -24,29 +17,7 @@
  */
 
 /*!
- * vuex v3.5.1
- * (c) 2020 Evan You
+ * vuex v3.6.2
+ * (c) 2021 Evan You
  * @license MIT
  */
-
-/**
- * [chartjs-plugin-labels]{@link https://github.com/emn178/chartjs-plugin-labels}
- *
- * @version 1.1.0
- * @author Chen, Yi-Cyuan [emn178@gmail.com]
- * @copyright Chen, Yi-Cyuan 2017-2018
- * @license MIT
- */
-
-/**!
- * Sortable 1.10.2
- * @author	RubaXa   <trash@rubaxa.org>
- * @author	owenm    <owen23355@gmail.com>
- * @license MIT
- */
-
-//! moment.js
-
-//! moment.js language configuration
-
-//! moment.js locale configuration

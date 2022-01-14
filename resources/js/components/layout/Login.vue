@@ -85,7 +85,10 @@ export default {
 						localStorage.saveName = this.sm_name;
 						localStorage.savePhone = this.sm_phone;
 						localStorage.savePw = this.sm_pw;
-						this.$router.push("/");
+
+						Auth.login(data).then(() =>
+							this.$router.push(this.$route.query.redirect || "/")
+						);
 					}
 				});
 		},
