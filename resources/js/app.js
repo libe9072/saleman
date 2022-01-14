@@ -8,6 +8,7 @@ import Vue from 'vue'
 import vuetify from './plugins/vuetify'
 import App from './App.vue'
 import router from './router'
+import { store } from "./store";
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -20,5 +21,6 @@ import router from './router'
 const app = new Vue({
   router,
   vuetify,
+  store: store,
   render: h => h(App)
 }).$mount('#app')

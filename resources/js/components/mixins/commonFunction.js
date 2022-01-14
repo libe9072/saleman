@@ -4,7 +4,8 @@
  * @author libe90
  * @date   2019-12-09
  * @comment 공통 펑션
- */
+*/
+import { mapState } from "vuex";
 export const commonFunction = {
 	data: () => ({
 		csrfToken: null,
@@ -51,6 +52,12 @@ export const commonFunction = {
 		},
 	},
 	computed: {
+		...mapState({
+			SSEQNO: state => state.sessionData.SSEQNO,
+			SNAME: state => state.sessionData.SNAME,
+			SUCP: state => state.sessionData.SUCP,
+			SADMIN: state => state.sessionData.SADMIN,
+		}),
 	},
 	created() {
 		this.csrfToken = document.querySelector('meta[name="csrf-token"]').content;

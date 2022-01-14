@@ -19,6 +19,7 @@
 								label="이름"
 								v-model="sm_name"
 								hide-details
+								@keyup.enter="loginSaleman"
 							>
 							</v-text-field>
 							<v-text-field
@@ -26,14 +27,16 @@
 								label="전화번호"
 								v-model="sm_phone"
 								hide-details
+								@keyup.enter="loginSaleman"
 							>
 							</v-text-field>
 							<v-text-field
 								placeholder="비밀번호"
 								label="비밀번호"
-								v-model="sm_password"
+								v-model="sm_pw"
 								type="password"
 								hide-details
+								@keyup.enter="loginSaleman"
 							>
 							</v-text-field>
 						</v-col>
@@ -42,15 +45,15 @@
 								color="secondary"
 								height="100%"
 								block
-								to="/searchlist"
+								@click="loginSaleman"
 							>
 								로그인</v-btn
 							>
 						</v-col>
 					</v-row>
 				</v-col>
-				<v-col cols="12" class="caption error--text">
-					사용 정지된 계정입니다. 관리자에게 문의하세요.
+				<v-col cols="12" class="caption error--text" v-if="msg">
+					* {{ msg }}
 				</v-col>
 			</v-row>
 		</v-form>
@@ -60,64 +63,41 @@
 import axios from "axios";
 export default {
 	data: () => ({
-		searchParams: {
-			number: 2, //결합인원(2~5)
-			ratePlanType: 130000, //요금제  가격대
-			lineNumber: 1, //수정하는 결합회선  아이디(1~5)
-			teenagerNumber: 0, //청소년  할인수(0~5)
-			type: "1G", //인터넷(랜선)할인  유형
-			customRatePlanType: [],
-		},
-		numberItems: [2, 3, 4, 5],
-		priceItems: [80000, 90000, 100000, 110000, 130000],
-		teenagerItems: [0, 1, 2, 3, 4, 5],
-		typeItems: ["500M", "1G"],
-		resultDatas: [], //결과값
+		sm_name: null,
+		sm_phone: null,
+		sm_pw: null,
+		msg: null,
 	}),
 	methods: {
-		totalData(type, line) {
-			let plus = "";
-			let i = 0;
+		loginSaleman() {
 			axios
-				.get("/api/chrg?viewType=" + type, {
-					params: {
-						number: this.searchParams.number, //결합인원(2~5)
-						ratePlanType:
-							type === "line"
-								? this.searchParams.customRatePlanType[line]
-								: this.searchParams.ratePlanType, //요금제  가격대
-						lineNumber: line, //수정하는 결합회선  아이디(1~5)
-						teenagerNumber: this.searchParams.teenagerNumber, //청소년  할인수(0~5)
-						type: this.searchParams.type, //인터넷(랜선)할인  유형
-					},
+				.post("/api/saleman/loginSaleman?_method=PUT", {
+					_token: this.csrfToken,
+					sm_name: this.sm_name,
+					sm_phone: this.sm_phone,
+					sm_pw: this.sm_pw,
+					params: { type: "mod" },
 				})
 				.then(({ data }) => {
-					console.info(data);
-					if (type === "total") {
-						for (i = 1; i < this.searchParams.ratePlanType; i++) {
-							this.searchParams.customRatePlanType[i] =
-								this.searchParams.ratePlanType;
-						}
-						this.resultDatas = data.data;
-					} else if (type === "line") {
-						for (i = 0; i < this.resultDatas.length; i++) {
-							this.resultDatas[i].lines[line] = data.data[i];
-						}
-					} else if (type === "internet") {
-						for (i = 0; i < this.resultDatas.length; i++) {
-							this.resultDatas[i].internet = data.data[i];
-						}
-					} else if (type === "teenager") {
-						console.info("i");
-						for (i = 0; i < this.resultDatas.length; i++) {
-							this.resultDatas[i].teenager = data.data[i];
-						}
+					if (data.message) {
+						this.msg = data.message;
+					} else {
+						localStorage.saveName = this.sm_name;
+						localStorage.savePhone = this.sm_phone;
+						localStorage.savePw = this.sm_pw;
+						this.$router.push("/");
 					}
 				});
 		},
 	},
 	watch: {},
-	created() {},
+	created() {
+		if (typeof localStorage.saveName !== undefined) {
+			this.sm_name = localStorage.saveName;
+			this.sm_phone = localStorage.savePhone;
+			this.sm_pw = localStorage.savePw;
+		}
+	},
 	mounted() {},
 	computed: {},
 };
