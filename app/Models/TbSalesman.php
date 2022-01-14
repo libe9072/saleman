@@ -30,13 +30,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class TbSalesman extends Eloquent
 {
-	use \Illuminate\Database\Eloquent\SoftDeletes;
 	protected $table = 'tb_salesman';
+	protected $primaryKey = 'seq_no';
 	public $timestamps = true;
 	use SoftDeletes;
 
 	protected $casts = [
-		'seq_no' => 'int',
 		'usable_cp_month_cap' => 'int'
 	];
 
@@ -47,6 +46,7 @@ class TbSalesman extends Eloquent
 		'sm_memo',
 		'is_admin',
 		'usable_cp_month_cap',
-		'sm_status'
+		'sm_status',
+		'sm_pw'
 	];
 }

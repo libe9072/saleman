@@ -16,5 +16,6 @@ use Illuminate\Http\Request;
 Route::group(['middleware' => ['cors']], function () {
     //Add you routes here, for example:
 
-    Route::resource('/chrg', 'ChrgController', []);
+    Route::resource('/saleman', 'TbSalesmanController', []);
+    Route::resource('/checkDuplicationData', 'CheckDuplicationDataController', []);
 });
