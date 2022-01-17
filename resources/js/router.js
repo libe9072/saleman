@@ -25,6 +25,13 @@ export default new Router({
       component: Login,
     },
     {
+      path: '/logout',
+      beforeEnter(to, from, next) {
+        Auth.logout()
+        next('/login')
+      }
+    },
+    {
       path: '/', beforeEnter: requireAuth,
       name: 'searchlist',
       component: SearchList,

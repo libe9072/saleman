@@ -6,6 +6,7 @@
  * @comment 공통 펑션
 */
 import { mapState } from "vuex";
+import dayjs from "dayjs";
 export const commonFunction = {
 	data: () => ({
 		csrfToken: null,
@@ -14,14 +15,31 @@ export const commonFunction = {
 		showSnackBar: { //스넥바 노출여부
 			default: false
 		},
-		isMobile: { //모바일여부
-			default: false
-		},
-		wFull: { //PC보기여부
-			default: false
-		}
 	},
 	methods: {
+		dateformat(type, date, format) {
+			if (type === 'D') {
+				return dayjs(date).format(format)
+			} else if (type === 'DD') {
+				let today = dayjs();
+
+				let expired_at = dayjs(date);
+
+				let result = expired_at.diff(today, "day", true);
+
+				let d_day = Math.floor(result);
+				return d_day;
+			} else if (type === 'DM') {
+				let today = dayjs();
+
+				let expired_at = dayjs(date);
+
+				let result = expired_at.diff(today, "month", true);
+
+				let d_day = Math.floor(result);
+				return d_day;
+			}
+		},
 		setSnackData: function (data) { //스낵바 호출
 			this.$emit('snackData', data)
 		},
@@ -32,16 +50,6 @@ export const commonFunction = {
 			Object.assign(this.$data, this.$options.data.call(this))
 		},
 		nextClick() {
-		},
-		setConfirmModalData: function (data) {  //컨펌창 호출
-			if (this.showConfirmModal === false) {
-				this.showConfirmModal = true;
-			}
-			if (data === undefined) {
-				this.showConfirmModal = true;
-			} else {
-				this.confirmModalProps = data
-			}
 		},
 		makeSnakeData(data, color) { // snake message 생성
 			let message = {

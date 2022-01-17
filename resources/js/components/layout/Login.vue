@@ -5,59 +5,57 @@
  * @comment 컴포넌트 모음
  */
 <template>
-	<v-card>
-		<v-form>
-			<v-row no-gutter class="pa-2">
-				<v-col cols="12" class="text-center font-weight-bold display-2">
-					모비셀 기간 보상
-				</v-col>
-				<v-col>
-					<v-row no-gutters>
-						<v-col class="mr-3">
-							<v-text-field
-								placeholder="이름"
-								label="이름"
-								v-model="sm_name"
-								hide-details
-								@keyup.enter="loginSaleman"
-							>
-							</v-text-field>
-							<v-text-field
-								placeholder="전화번호"
-								label="전화번호"
-								v-model="sm_phone"
-								hide-details
-								@keyup.enter="loginSaleman"
-							>
-							</v-text-field>
-							<v-text-field
-								placeholder="비밀번호"
-								label="비밀번호"
-								v-model="sm_pw"
-								type="password"
-								hide-details
-								@keyup.enter="loginSaleman"
-							>
-							</v-text-field>
-						</v-col>
-						<v-col cols="3">
-							<v-btn
-								color="secondary"
-								height="100%"
-								block
-								@click="loginSaleman"
-							>
-								로그인</v-btn
-							>
-						</v-col>
-					</v-row>
-				</v-col>
-				<v-col cols="12" class="caption error--text" v-if="msg">
-					* {{ msg }}
-				</v-col>
-			</v-row>
-		</v-form>
-	</v-card>
+	<v-form>
+		<v-row no-gutter class="pa-2">
+			<v-col cols="12" class="text-center font-weight-bold display-2">
+				모비셀 기간 보상
+			</v-col>
+			<v-col>
+				<v-row no-gutters>
+					<v-col class="mr-3">
+						<v-text-field
+							placeholder="이름"
+							label="이름"
+							v-model="sm_name"
+							hide-details
+							@keyup.enter="loginSaleman"
+						>
+						</v-text-field>
+						<v-text-field
+							placeholder="전화번호"
+							label="전화번호"
+							v-model="sm_phone"
+							hide-details
+							@keyup.enter="loginSaleman"
+						>
+						</v-text-field>
+						<v-text-field
+							placeholder="비밀번호"
+							label="비밀번호"
+							v-model="sm_pw"
+							type="password"
+							hide-details
+							@keyup.enter="loginSaleman"
+						>
+						</v-text-field>
+					</v-col>
+					<v-col cols="3">
+						<v-btn
+							color="secondary"
+							height="100%"
+							block
+							@click="loginSaleman"
+						>
+							로그인</v-btn
+						>
+					</v-col>
+				</v-row>
+			</v-col>
+			<v-col cols="12" class="caption error--text" v-if="msg">
+				* {{ msg }}
+			</v-col>
+		</v-row>
+	</v-form>
 </template>
 <script>
 import axios from "axios";

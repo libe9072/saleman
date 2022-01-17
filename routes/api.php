@@ -17,5 +17,6 @@ Route::group(['middleware' => ['cors']], function () {
     //Add you routes here, for example:
 
     Route::resource('/saleman', 'TbSalesmanController', []);
+    Route::resource('/user', 'UserController', []);
     Route::resource('/checkDuplicationData', 'CheckDuplicationDataController', []);
 });

@@ -266,6 +266,19 @@ class TbSalesmanController extends Controller
     }
 
     /**
+     * logout.
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function logoutSaleman(Request $request)
+    {
+        Log::info("### TbSalesmanController logoutSaleman ###");
+        session()->flush();
+        session()->regenerate();
+        return response(1, Response::HTTP_OK);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id

@@ -36,6 +36,7 @@
         "webpack-dev-server": "^3.11.0"
     },
     "dependencies": {
+        "dayjs": "^1.10.7",
         "npm": "^6.14.5",
         "npm-check-updates": "^4.1.2",
         "vue-infinite-loading": "^2.4.5",

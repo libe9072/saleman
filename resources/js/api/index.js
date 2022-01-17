@@ -18,6 +18,23 @@ export const Auth = {
       resolve({ token });
     });
   },
+  logout() {
+    return new Promise((resolve, reject) => {
+      axios
+        .post("/api/saleman/logoutSaleman?_method=PUT", {
+          _token: this.csrfToken,
+          params: { type: "mod" },
+        })
+        .then(({ data }) => {
+          delete localStorage.token;
+          store.commit({
+            type: "sessionDataDelete"
+          });
+          this.onChange(false);
+          resolve();
+        });
+    });
+  },
   loggedIn: async function () {
     this.mixVersion = document.querySelector('meta[name="mixVersion"]').content;
     await axios
@@ -26,10 +43,12 @@ export const Auth = {
         params: { type: "mod" },
       })
       .then(({ data }) => {
+        console.info(data);
         if (data.mixVersion !== this.mixVersion) {
           window.location.reload();
         }
         if (typeof data.sessionData.SSEQNO === "undefined") {
+          console.info(1);
           delete localStorage.token;
           store.commit({
             type: "sessionDataDelete"
@@ -37,12 +56,14 @@ export const Auth = {
           this.onChange(false);
         } else {
           if (typeof localStorage.token === "undefined") {
+            console.info(2);
             delete localStorage.token;
             store.commit({
               type: "sessionDataDelete"
             });
             this.onChange(false);
           } else if (store.state.sessionData.SSEQNO === null) {
+            console.info(3);
             store.commit({
               type: "sessionDataUpdate",
               datas: data.sessionData
