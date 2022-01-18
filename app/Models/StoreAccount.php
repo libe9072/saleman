@@ -19,12 +19,14 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * 
+ * @property \App\Models\Store $store
  *
  * @package App\Models
  */
-class Store extends Eloquent
+class StoreAccount extends Eloquent
 {
 
+    protected $primaryKey = 'uID';
     protected $casts = [
         'uID' => 'int',
         'storeID' => 'int',
@@ -34,8 +36,9 @@ class Store extends Eloquent
 
     protected $fillable = [];
 
+
     public function store()
     {
-        return $this->hasOne(\App\Models\Store::class, 'sto_id');
+        return $this->belongsTo(\App\Models\Store::class, 'storeID', 'sto_id');
     }
 }

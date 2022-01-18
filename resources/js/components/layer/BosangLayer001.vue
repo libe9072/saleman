@@ -21,66 +21,126 @@
 									cols="12"
 									class="text-center font-weight-bold my-2"
 								>
-									주식회사 애플모바일<br />
-									bsc562apple
+									{{ formData.storeName }}<br />
+									{{ formData.userName }}
 								</v-col>
 								<v-col cols="12">
 									<v-row no-gutters justify="center">
 										<v-col cols="auto" class="mx-1">
-											<v-btn outlined color="gry"
+											<v-btn
+												outlined
+												color="gry"
+												@click="dateReset('M')"
 												>RESET</v-btn
 											>
 										</v-col>
 										<v-col cols="3" class="mx-1">
 											<v-text-field
-												value="3"
-												disabled
 												hide-details
 												dense
+												type="number"
+												v-model="plusMonth"
 											></v-text-field>
 										</v-col>
 										<v-col cols="auto" class="mx-1">
 											<v-btn-toggle
 												v-model="toggle_exclusive"
-												mandatory
 											>
-												<v-btn>+ 1M</v-btn>
-												<v-btn>+ 3M</v-btn>
-												<v-btn>+ 6M</v-btn>
+												<v-btn
+													@click="plusDate('M', '1')"
+													>+ 1M</v-btn
+												>
+												<v-btn
+													@click="plusDate('M', '3')"
+													>+ 3M</v-btn
+												>
+												<v-btn
+													@click="plusDate('M', '6')"
+													>+ 6M</v-btn
+												>
 											</v-btn-toggle>
 										</v-col>
 									</v-row>
 								</v-col>
-								<v-col cols="12" class="pt-1">
+								<v-col
+									cols="12"
+									class="pt-1"
+									v-if="
+										$store.state.sessionData.SADMIN === 'Y'
+									"
+								>
 									<v-row no-gutters justify="center">
 										<v-col cols="auto" class="mx-1">
-											<v-btn outlined color="gry"
+											<v-btn
+												outlined
+												color="gry"
+												@click="dateReset('D')"
 												>RESET</v-btn
 											>
 										</v-col>
 										<v-col cols="3" class="mx-1">
 											<v-text-field
-												value="3"
-												disabled
+												type="number"
 												hide-details
 												dense
+												v-model="plusDay"
 											></v-text-field>
 										</v-col>
 										<v-col cols="auto" class="mx-1">
 											<v-btn-toggle
 												v-model="toggle_exclusive"
-												mandatory
 											>
-												<v-btn>+ 1D</v-btn>
-												<v-btn>+ 3D</v-btn>
-												<v-btn>+ 6D</v-btn>
+												<v-btn
+													@click="plusDate('D', '1')"
+													>+ 1D</v-btn
+												>
+												<v-btn
+													@click="plusDate('D', '3')"
+													>+ 3D</v-btn
+												>
+												<v-btn
+													@click="plusDate('D', '6')"
+													>+ 6D</v-btn
+												>
 											</v-btn-toggle>
 										</v-col>
 									</v-row>
 								</v-col>
 								<v-col cols="12" class="text-center my-2">
-									보상전 : 2022/12/31 (D-287)<br />
-									보상후 : 2023/06/30 (D-542)
+									보상전 :
+									<span v-if="expired_date">
+										{{
+											dateformat(
+												"D",
+												expired_date,
+												"YYYY/MM/DD"
+											)
+										}}
+										(D-{{
+											dateformat(
+												"DD",
+												expired_date,
+												"YYYY/MM/DD"
+											)
+										}}) </span
+									><span v-else>만료</span><br />
+									보상후 :
+									<span v-if="new_expired_date">
+										{{
+											dateformat(
+												"D",
+												new_expired_date,
+												"YYYY/MM/DD"
+											)
+										}}
+										(D-{{
+											dateformat(
+												"DD",
+												new_expired_date,
+												"YYYY/MM/DD"
+											)
+										}})
+									</span>
 								</v-col>
 								<v-col class="font-weight-bold my-2">
 									보상이력
@@ -126,6 +186,8 @@ import ModalLayer from "../layout/ModalLayer";
 import BosangLayer002 from "../layer/BosangLayer002";
 import dataProps from "../../assets/dataProps";
 import { commonFunction } from "../mixins/commonFunction";
+import axios from "axios";
+import dayjs from "dayjs";
 export default {
 	name: "BosangLayer001",
 	components: {
@@ -140,11 +202,20 @@ export default {
 			// 조건
 			default: [],
 		},
+		bosangId: {
+			default: null,
+		},
 	},
 	computed: {
 		showFullModal: {
 			get() {
 				if (this.showBosangLayer001 === true) {
+					if (this.bosangId !== null) {
+						this.getData();
+					}
+				} else {
+					this.reset(); //초기화
+					this.$emit("update:bosangId", null); //seq_no초기화
 				}
 				return this.showBosangLayer001;
 			},
@@ -156,15 +227,90 @@ export default {
 	data: () => ({
 		topProps: dataProps.fullModal.BosangLayer001,
 		memo: null,
+		formData: {
+			storeName: null,
+			userName: null,
+		},
+		item: [],
+		expired_date: null,
+		plusMonth: 0,
+		plusDay: 0,
+		new_expired_date: null,
 		showBosangLayer002: false, //첨부이미지 보기 레이어
 	}),
 	methods: {
 		nextClick() {
 			this.showBosangLayer002 = true;
 		},
+		//내용호출
+		getData() {
+			axios
+				.get("/api/user/" + this.bosangId + "/edit")
+				.then(({ data }) => {
+					console.info(data);
+					this.item = data;
+					this.formData.userName = data.username;
+					this.formData.storeName = data.store_account.store.sto_name;
+					let expr = null;
+
+					if (data.store_account.store.store_plans.length > 0) {
+						data.store_account.store.store_plans.forEach((crud) => {
+							if (
+								crud.canceled_at === null &&
+								this.dateformat(
+									"DD",
+									crud.expired_date,
+									"YYYY/MM/DD"
+								) > 0
+							) {
+								expr = crud.expired_date;
+								return false;
+							}
+						});
+						this.expired_date = expr;
+					}
+				});
+		},
+		plusDate(type, val) {
+			if (type === "M") {
+				this.plusMonth = parseInt(this.plusMonth) + parseInt(val);
+			}
+			if (type === "D") {
+				this.plusDay = parseInt(this.plusDay) + parseInt(val);
+			}
+		},
+		dateReset(type) {
+			if (type === "M") {
+				this.plusMonth = 0;
+			}
+			if (type === "D") {
+				this.plusDay = 0;
+			}
+		},
 	},
 	created() {},
-	watch: {},
+	watch: {
+		plusMonth() {
+			let today = dayjs();
+
+			let exp =
+				this.expired_date === null ? today : dayjs(this.expired_date);
+			let new_date = exp.add(this.plusMonth, "month").format();
+			this.new_expired_date = dayjs(new_date)
+				.add(this.plusDay, "day")
+				.format();
+		},
+		plusDay() {
+			let today = dayjs();
+
+			let exp =
+				this.expired_date === null ? today : dayjs(this.expired_date);
+			let new_date = exp.add(this.plusMonth, "month").format();
+			this.new_expired_date = dayjs(new_date)
+				.add(this.plusDay, "day")
+				.format();
+		},
+	},
 	mixins: [commonFunction],
 };
 </script>

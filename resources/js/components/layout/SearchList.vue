@@ -316,14 +316,19 @@ export default {
 			this.showSnackBar = true;
 		},
 		textpWithHilght: function (text) {
-			return text !== null
-				? text.replace(
-						this.search[0],
-						'<span class="error--text">' +
-							this.search[0] +
-							"</span>"
-				  )
-				: "";
+			if (text !== null) {
+				for (var key in this.search) {
+					var crud = this.search[key];
+					console.info(crud);
+					if (text.includes(crud)) {
+						return text.replace(
+							crud,
+							'<span class="error--text">' + crud + "</span>"
+						);
+					}
+				}
+			}
+			return text;
 		},
 		//목록 로드
 		listLoad($state) {
