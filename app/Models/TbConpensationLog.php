@@ -56,4 +56,9 @@ class TbConpensationLog extends Eloquent
 		'user_agent',
 		'ip_address'
 	];
+
+	public function saleman()
+	{
+		return $this->belongsTo(\App\Models\TbSalesman::class, 'sm_seq_no', 'seq_no');
+	}
 }

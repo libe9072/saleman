@@ -25,6 +25,9 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
  */
 class StorePlanChangeLog extends Eloquent
 {
+	protected $table = 'store_plan_change_logs';
+	protected $primaryKey = 'id';
+	public $timestamps = true;
 	protected $casts = [
 		'stp_id' => 'int'
 	];

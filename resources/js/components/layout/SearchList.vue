@@ -319,7 +319,6 @@ export default {
 			if (text !== null) {
 				for (var key in this.search) {
 					var crud = this.search[key];
-					console.info(crud);
 					if (text.includes(crud)) {
 						return text.replace(
 							crud,
@@ -343,8 +342,6 @@ export default {
 					params: { search: this.search },
 				})
 				.then(({ data }) => {
-					console.info("data");
-					console.info(data);
 					this.current_page = data.current_page;
 					this.last_page = data.last_page;
 					this.next_page = this.next_page + 1;

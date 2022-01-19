@@ -21,8 +21,8 @@
 									cols="12"
 									class="text-center font-weight-bold my-2"
 								>
-									{{ formData.storeName }}<br />
-									{{ formData.userName }}
+									{{ memberData.storeName }}<br />
+									{{ memberData.userName }}
 								</v-col>
 								<v-col cols="12">
 									<v-row no-gutters justify="center">
@@ -38,6 +38,10 @@
 											<v-text-field
 												hide-details
 												dense
+												:readonly="
+													$store.state.sessionData
+														.SADMIN !== 'Y'
+												"
 												type="number"
 												v-model="plusMonth"
 											></v-text-field>
@@ -142,19 +146,76 @@
 										}})
 									</span>
 								</v-col>
+								<v-col
+									cols="12"
+									v-if="error_message"
+									class="error--text caption"
+								>
+									* {{ error_message }}
+								</v-col>
 								<v-col class="font-weight-bold my-2">
 									보상이력
 								</v-col>
 								<v-col cols="auto">
-									<v-btn small block>더보기</v-btn>
+									<v-btn small @click="moreBtn" block>{{
+										moreText
+									}}</v-btn>
 								</v-col>
 								<v-col cols="12">
-									<v-card class="my-1 pa-2 gry2">
-										+6M 2021/12/09 김과장<br />6개월 장기
-										선결제 보상 건<br />
-										<v-divider class="my-1"></v-divider>
-										-2M -14D 2021/11/30 임대리<br />환불
-										차감
+									<v-card
+										class="my-1 pa-2 gry2"
+										style="
+											max-height: 100px;
+											overflow: scroll;
+										"
+									>
+										<div
+											v-for="(log, index) in item.log"
+											:key="index"
+										>
+											<span v-if="log.set_cp_month !== 0"
+												><span
+													v-if="log.set_cp_month > 0"
+													>+</span
+												>{{ log.set_cp_month }}M</span
+											>
+											<span v-if="log.set_cp_day !== 0">
+												<span v-if="log.set_cp_day > 0"
+													>+</span
+												>{{ log.set_cp_day }}D</span
+											>
+											{{
+												dateformat(
+													"D",
+													log.created_at,
+													"YYYY/MM/DD"
+												)
+											}}
+											{{ log.saleman.sm_name
+											}}<v-btn
+												v-if="
+													log.sm_seq_no ===
+														$store.state.sessionData
+															.SSEQNO &&
+													$store.state.sessionData
+														.SADMIN !== 'Y' &&
+													log.set_cp_month > 0
+												"
+												x-small
+												color="error"
+												class="float-right"
+												@click="
+													plusMonth =
+														log.set_cp_month * -1
+												"
+												>되돌리기 </v-btn
+											><br />{{ log.cp_memo }}
+
+											<v-divider
+												v-if="index < logcount - 1"
+												class="my-1"
+											></v-divider>
+										</div>
 									</v-card>
 								</v-col>
 								<v-col cols="12">
@@ -165,7 +226,7 @@
 										auto-grow
 										hide-details
 										rows="1"
-										v-model="memo"
+										v-model="formData.cp_memo"
 									></v-textarea>
 								</v-col>
 							</v-row>
@@ -174,7 +235,8 @@
 				</v-container>
 				<BosangLayer002
 					:showBosangLayer002.sync="showBosangLayer002"
-					:imgData="imgData"
+					:formData.sync="formData"
+					@reloadList="reloadList"
 				/>
 			</template>
 		</ModalLayer>
@@ -197,10 +259,6 @@ export default {
 	props: {
 		showBosangLayer001: {
 			default: false,
-		},
-		imgData: {
-			// 조건
-			default: [],
 		},
 		bosangId: {
 			default: null,
@@ -227,53 +285,120 @@ export default {
 	data: () => ({
 		topProps: dataProps.fullModal.BosangLayer001,
 		memo: null,
-		formData: {
+		memberData: {
 			storeName: null,
 			userName: null,
 		},
+		formData: {
+			stp_id: null, //plan_id
+			new_expired_date: null, //변경만료일
+			old_expired_date: null, //기존만료일
+			new_purchase_date: null, //plan purchase_date
+			old_purchase_date: null, //plan purchase_date
+			add_amount_free_time: 0, //변경일수계산
+
+			mobisell_id: null,
+			store_name: null,
+			set_cp_month: 0,
+			set_cp_day: 0,
+			ori_date: null,
+			set_date: null,
+			cp_memo: null,
+		},
 		item: [],
+		logcount: 0,
 		expired_date: null,
+		error_message: null,
 		plusMonth: 0,
 		plusDay: 0,
 		new_expired_date: null,
+		page: 1,
+		moreText: "더보기",
 		showBosangLayer002: false, //첨부이미지 보기 레이어
 	}),
 	methods: {
+		moreBtn() {
+			if (this.page === 1) {
+				this.page = 2;
+				this.moreText = "닫기";
+			} else {
+				this.page = 1;
+				this.moreText = "더보기";
+			}
+			this.getData();
+		},
 		nextClick() {
-			this.showBosangLayer002 = true;
+			this.submitAction();
 		},
 		//내용호출
 		getData() {
 			axios
-				.get("/api/user/" + this.bosangId + "/edit")
+				.get("/api/user/" + this.bosangId + "/edit", {
+					params: { page: this.page },
+				})
 				.then(({ data }) => {
-					console.info(data);
 					this.item = data;
-					this.formData.userName = data.username;
-					this.formData.storeName = data.store_account.store.sto_name;
+					this.logcount = data.log.length;
+					this.memberData.userName = data.user.username;
+					this.formData.mobisell_id = data.user.username;
+					this.memberData.storeName =
+						data.user.store_account.store.sto_name;
+					this.formData.store_name =
+						data.user.store_account.store.sto_name;
 					let expr = null;
 
-					if (data.store_account.store.store_plans.length > 0) {
-						data.store_account.store.store_plans.forEach((crud) => {
-							if (
-								crud.canceled_at === null &&
-								this.dateformat(
-									"DD",
-									crud.expired_date,
-									"YYYY/MM/DD"
-								) > 0
-							) {
-								expr = crud.expired_date;
-								return false;
+					if (data.user.store_account.store.store_plans.length > 0) {
+						data.user.store_account.store.store_plans.forEach(
+							(crud) => {
+								if (
+									crud.canceled_at === null &&
+									this.dateformat(
+										"DD",
+										crud.expired_date,
+										"YYYY/MM/DD"
+									) > 0
+								) {
+									this.formData.stp_id = crud.id;
+									this.formData.old_expired_date =
+										crud.expired_date;
+									this.formData.ori_date = crud.expired_date;
+									this.formData.new_purchase_date =
+										crud.purchase_date;
+									this.formData.old_purchase_date =
+										crud.purchase_date;
+
+									expr = crud.expired_date;
+									return false;
+								}
+								if (crud.canceled_at === null) {
+									this.formData.stp_id = crud.id;
+									this.formData.old_expired_date =
+										crud.expired_date;
+									this.formData.ori_date = crud.expired_date;
+									this.formData.new_purchase_date =
+										crud.purchase_date;
+									this.formData.old_purchase_date =
+										crud.purchase_date;
+								}
 							}
-						});
+						);
 						this.expired_date = expr;
 					}
 				});
 		},
 		plusDate(type, val) {
 			if (type === "M") {
-				this.plusMonth = parseInt(this.plusMonth) + parseInt(val);
+				if (
+					this.$store.state.sessionData.SADMIN !== "Y" &&
+					this.$store.state.sessionData.SUCP <
+						parseInt(this.plusMonth) + parseInt(val)
+				) {
+					this.error_message =
+						"가능 보상개월수 보다 많은값을 입력할 수 없습니다.";
+				} else {
+					this.plusMonth = parseInt(this.plusMonth) + parseInt(val);
+					this.error_message = null;
+				}
 			}
 			if (type === "D") {
 				this.plusDay = parseInt(this.plusDay) + parseInt(val);
@@ -287,6 +412,21 @@ export default {
 				this.plusDay = 0;
 			}
 		},
+		submitAction() {
+			this.formData.new_expired_date = this.new_expired_date;
+			this.formData.set_date = this.new_expired_date;
+			this.formData.add_amount_free_time = this.dateformat("DF", [
+				this.formData.old_expired_date,
+				this.formData.new_expired_date,
+			]);
+			this.formData.set_cp_month = this.plusMonth;
+			this.formData.set_cp_day = this.plusDay;
+			this.showBosangLayer002 = true;
+		},
+		reloadList() {
+			this.$emit("update:itemListReRoad", true);
+			this.$emit("update:showBosangLayer001", false);
+		},
 	},
 	created() {},
 	watch: {
@@ -298,7 +438,7 @@ export default {
 			let new_date = exp.add(this.plusMonth, "month").format();
 			this.new_expired_date = dayjs(new_date)
 				.add(this.plusDay, "day")
-				.format();
+				.format("YYYY-MM-DD");
 		},
 		plusDay() {
 			let today = dayjs();
@@ -308,7 +448,7 @@ export default {
 			let new_date = exp.add(this.plusMonth, "month").format();
 			this.new_expired_date = dayjs(new_date)
 				.add(this.plusDay, "day")
-				.format();
+				.format("YYYY-MM-DD");
 		},
 	},
 	mixins: [commonFunction],

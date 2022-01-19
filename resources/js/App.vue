@@ -41,14 +41,14 @@ export default {
 	}),
 	methods: {},
 	watch: {
-		SESSION: {
-			handler: function () {
-				this.$store.commit({
-					type: "routeReload1",
-				});
-			},
-			deep: true,
-		},
+		// SESSION: {
+		// 	handler: function () {
+		// 		this.$store.commit({
+		// 			type: "routeReload1",
+		// 		});
+		// 	},
+		// 	deep: true,
+		// },
 	},
 	computed: {
 		...mapState({

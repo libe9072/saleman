@@ -44,6 +44,10 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
  */
 class StorePlan extends Eloquent
 {
+	protected $table = 'store_plans';
+	protected $primaryKey = 'id';
+	public $timestamps = true;
+
 	protected $casts = [
 		'state' => 'bool',
 		'packageID' => 'int',

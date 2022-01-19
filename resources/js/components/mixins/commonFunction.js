@@ -38,6 +38,15 @@ export const commonFunction = {
 
 				let d_day = Math.floor(result);
 				return d_day;
+			} else if (type === 'DF') {
+				let date0 = dayjs(date[0]);
+
+				let date1 = dayjs(date[1]);
+
+				let result = date1.diff(date0, "day", true);
+
+				let d_day = Math.floor(result);
+				return d_day;
 			}
 		},
 		setSnackData: function (data) { //스낵바 호출

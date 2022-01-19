@@ -258,7 +258,8 @@ class TbSalesmanController extends Controller
                 session(['SNAME' => $tbSalesman->sm_name]); // 이름
                 session(['SUCP' => $tbSalesman->usable_cp_month_cap]); // 잔여기간
                 session(['SADMIN' => $tbSalesman->is_admin]); // 어드민접속여부
-                return  response(['code' => 0], Response::HTTP_EXPECTATION_FAILED);
+                $session = session()->all();
+                return response($session, Response::HTTP_OK);
             }
         } else {
             return  response(['code' => 0, 'message' => "존재하지 않는 계정입니다. 다시 시도해 주세요."], Response::HTTP_EXPECTATION_FAILED);
