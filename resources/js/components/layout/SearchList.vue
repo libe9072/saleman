@@ -353,7 +353,7 @@ export default {
 						$state.complete();
 					} else if (
 						this.$store.state.sessionData.SADMIN !== "Y" &&
-						this.current_page > 10
+						this.current_page > 1
 					) {
 						$state.complete();
 					}
