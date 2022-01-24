@@ -26,6 +26,9 @@
 							label="전화번호"
 							v-model="sm_phone"
 							hide-details
+							maxLength="13"
+							type="tel"
+							@keyup="phoneKeyup"
 							@keyup.enter="loginSaleman"
 						>
 						</v-text-field>
@@ -90,6 +93,14 @@ export default {
 						);
 					}
 				});
+		},
+		phoneKeyup() {
+			if (this.sm_phone.length === 3) {
+				this.sm_phone += "-";
+			}
+			if (this.sm_phone.length === 8) {
+				this.sm_phone += "-";
+			}
 		},
 	},
 	watch: {},

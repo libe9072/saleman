@@ -178,11 +178,6 @@
 											>지도보기</v-btn
 										><br />
 										<a
-											v-bind:href="`tel:` + item.phone"
-											v-html="textpWithHilght(item.phone)"
-										></a
-										>,
-										<a
 											v-bind:href="
 												`tel:` + item.sto_phone_number
 											"
@@ -209,6 +204,7 @@
 										<v-btn
 											height="100%"
 											color="secondary"
+											x-small
 											@click="BosangLayer001Btn(item.id)"
 										>
 											기간보상

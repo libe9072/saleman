@@ -150,8 +150,6 @@ export default {
 					} else {
 						this.$emit("reloadList");
 						if (this.$store.state.sessionData.SADMIN !== "Y") {
-							console.info("ssss");
-
 							// vuex session  정보를 강제 update 처리 함
 							this.$store.commit({
 								type: "sessionDataUpdate",

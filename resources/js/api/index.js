@@ -43,12 +43,10 @@ export const Auth = {
         params: { type: "mod" },
       })
       .then(({ data }) => {
-        console.info(data);
         if (data.mixVersion !== this.mixVersion) {
           window.location.reload();
         }
         if (typeof data.sessionData.SSEQNO === "undefined") {
-          console.info(1);
           delete localStorage.token;
           store.commit({
             type: "sessionDataDelete"
@@ -56,14 +54,12 @@ export const Auth = {
           this.onChange(false);
         } else {
           if (typeof localStorage.token === "undefined") {
-            console.info(2);
             delete localStorage.token;
             store.commit({
               type: "sessionDataDelete"
             });
             this.onChange(false);
           } else if (store.state.sessionData.SSEQNO === null) {
-            console.info(3);
             store.commit({
               type: "sessionDataUpdate",
               datas: data.sessionData

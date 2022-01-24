@@ -1,5 +1,6 @@
 /vendor
 .idea/
+.env
 .env.backup
 *.lock
 .phpunit.result.cache

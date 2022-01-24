@@ -58,6 +58,9 @@
 														0
 													)
 												"
+												maxLength="13"
+												type="tel"
+												@keyup="phoneKeyup('formData')"
 											>
 											</v-text-field>
 											<v-text-field
@@ -211,6 +214,14 @@
 																	item.sm_status !==
 																	'Y'
 																"
+																maxLength="13"
+																type="tel"
+																@keyup="
+																	phoneKeyup(
+																		'modifyData',
+																		i
+																	)
+																"
 																@keyup.capture="
 																	checkId(
 																		modifyData[
@@ -260,6 +271,11 @@
 																			item.sm_status !==
 																			'Y'
 																		"
+																		@change="
+																			checkAdmin(
+																				i
+																			)
+																		"
 																		label="관리자"
 																		false-value="N"
 																		true-value="Y"
@@ -280,8 +296,13 @@
 																		hide-details
 																		suffix="M"
 																		:disabled="
+																			modifyData[
+																				i
+																			]
+																				.is_admin ===
+																				'Y' ||
 																			item.sm_status !==
-																			'Y'
+																				'Y'
 																		"
 																	>
 																	</v-text-field>
@@ -488,7 +509,6 @@ export default {
 	}),
 	methods: {
 		checkId(name, phone, seq_no) {
-			console.info(name, phone, seq_no);
 			let msg = null;
 			// 이름 연락처 중복 검사
 			if (name && phone) {
@@ -502,7 +522,6 @@ export default {
 						},
 					})
 					.then(({ data }) => {
-						console.info(data);
 						if (data.code !== "undefined" && data.code === 1) {
 							msg = null;
 						} else if (data.message) {
@@ -513,12 +532,10 @@ export default {
 						} else {
 							this.errorMessage.old[seq_no] = msg;
 						}
-						console.info(this.errorMessage.old[seq_no]);
 					});
 			}
 		},
 		newSaleman: async function () {
-			console.info("newSaleman:" + this.valid);
 			//저장- > 다음버튼클릭
 			await this.validate(); //유효성검사
 			if (this.valid === true && this.errorMessage.new === null) {
@@ -553,7 +570,6 @@ export default {
 						params: { type: "mod" },
 					})
 					.then(({ data }) => {
-						console.info(data);
 						this.$emit(
 							"snackData",
 							this.makeSnakeData(
@@ -582,7 +598,6 @@ export default {
 						}
 					)
 					.then(({ data }) => {
-						console.info(data);
 						this.$emit(
 							"snackData",
 							this.makeSnakeData("삭제되었습니다.", "success")
@@ -687,7 +702,6 @@ export default {
 			let param = "";
 			param += "&page=" + this.next_page;
 			axios.get("/api/saleman?" + param).then(({ data }) => {
-				console.info(data);
 				this.current_page = data.current_page;
 				this.last_page = data.last_page;
 				this.next_page = this.next_page + 1;
@@ -703,6 +717,28 @@ export default {
 				}
 			});
 			this.firstOpen = false;
+		},
+		phoneKeyup(val, num) {
+			if (val === "formData") {
+				if (this.formData.sm_phone.length === 3) {
+					this.formData.sm_phone += "-";
+				}
+				if (this.formData.sm_phone.length === 8) {
+					this.formData.sm_phone += "-";
+				}
+			} else if (val === "modifyData") {
+				if (this.modifyData[num].sm_phone.length === 3) {
+					this.modifyData[num].sm_phone += "-";
+				}
+				if (this.modifyData[num].sm_phone.length === 8) {
+					this.modifyData[num].sm_phone += "-";
+				}
+			}
+		},
+		checkAdmin(i) {
+			if (this.modifyData[i].is_admin === "Y") {
+				this.modifyData[i].usable_cp_month_cap = 0;
+			}
 		},
 	},
 	created() {},
