@@ -132,7 +132,7 @@ class UserController extends Controller
         }))->where('id', $id)->first();
         $tbConpensationLog = TbConpensationLog::with('saleman')->where('mobisell_id', $User->username)->orderby('seq_no', 'DESC');
         if ($request['page'] == '1') {
-            $tbConpensationLog = $tbConpensationLog->limit(2);
+            $tbConpensationLog = $tbConpensationLog->limit(20);
         }
         $tbConpensationLog = $tbConpensationLog->get();
 
