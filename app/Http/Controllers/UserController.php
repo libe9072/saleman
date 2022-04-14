@@ -71,11 +71,14 @@ class UserController extends Controller
         }
         Log::info("### UserController INDEX");
         Log::info($request->all());
+        Log::info(isset($request['return_type']));
         $User = DB::select(DB::raw($query));
-
-        $User = $this->arrayPaginator($User, $request);
-        log::info($User);
-        return response($User->jsonSerialize(), Response::HTTP_OK);
+        if (isset($request['return_type'])) {
+            return response($User, Response::HTTP_OK);
+        } else {
+            $User = $this->arrayPaginator($User, $request);
+            return response($User->jsonSerialize(), Response::HTTP_OK);
+        }
     }
 
     public function arrayPaginator($array, $request)

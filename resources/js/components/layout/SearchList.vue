@@ -32,7 +32,26 @@
 						class="text-right"
 						v-if="$store.state.sessionData.SADMIN === 'Y'"
 					>
-						검색결과 : 총 {{ allItemCount }}개
+						<v-row no-gutters>
+							<v-col> 검색결과 : 총 {{ allItemCount }}개 </v-col>
+							<v-col cols="auto" class="pl-2">
+								<v-btn
+									color="#00A651"
+									outlined
+									x-small
+									class="mr-1 font-weight-regular"
+								>
+									<ExcelDown
+										:fetch="excelRead"
+										:fields="excelData.json_fields"
+										worksheet="My Worksheet"
+										:name="`회원목록` + now + `.xls`"
+										v-model="excelDataDown"
+										>엑셀 다운로드</ExcelDown
+									>
+								</v-btn>
+							</v-col>
+						</v-row>
 					</v-col>
 					<v-col cols="12">
 						<v-row no-gutters>
@@ -258,11 +277,13 @@ import BosangLayer001 from "../layer/BosangLayer001";
 import BosangLayer002 from "../layer/BosangLayer002";
 import { commonFunction } from "../mixins/commonFunction";
 import SnackBar from "../common/SnackBar";
+import ExcelDown from "../common/ExcelDown";
 export default {
 	components: {
 		BosangLayer001,
 		BosangLayer002,
 		SnackBar,
+		ExcelDown,
 	},
 	data: () => ({
 		showSnackBar: false,
@@ -270,6 +291,9 @@ export default {
 		showBosangLayer001: false, //첨부이미지 보기 레이어
 		showBosangLayer002: false, //첨부이미지 보기 레이어
 		items: [],
+		now: new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
+			.toISOString()
+			.substr(0, 10),
 		current_page: 0, //현재페이지
 		next_page: 1, //다음페이지
 		last_page: 1, //마지막페이지
@@ -279,8 +303,45 @@ export default {
 		search: [],
 		bosangId: null,
 		itemListReRoad: false,
+		excelDataDown: false,
+		excelData: {
+			json_fields: {
+				id: { val: "id" },
+				username: { val: "username" },
+				pay_type: { val: "pay_type" },
+				expired_date: { val: "expired_date" },
+				mobigo_live_end_date: {
+					val: "mobigo_live_end_date",
+				},
+			},
+			json_data: [],
+			json_meta: [
+				[
+					{
+						key: "charset",
+						value: "utf-8",
+					},
+				],
+			],
+		},
 	}),
 	methods: {
+		//엑셀호출
+		excelRead: async function () {
+			this.excelData.json_data = [];
+			let setExcelData = false; // 데이터 셋팅이 완료 될 경우 true
+			await axios.get("/api/user?return_type=E", {}).then(({ data }) => {
+				setExcelData = true;
+				data.forEach((crud) => {
+					if (crud.id) {
+						this.excelData.json_data.push(crud);
+					}
+				});
+			});
+			if (setExcelData === true) {
+				return this.excelData.json_data;
+			}
+		},
 		copyToClipboard(text) {
 			const element = document.createElement("textarea");
 			element.value = text;
