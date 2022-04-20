@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\TbSalesman;
 use App\Models\TbSalesmanCpMonthLog;
+use App\Models\User;
+use App\Models\StorePlan;
+use App\Models\PaymentRecurring;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Exception;
@@ -298,6 +302,116 @@ class TbSalesmanController extends Controller
         );
         Log::info("### TbSalesmanController showMid END" . session()->get('SSEQNO'));
         return response($dataArray, Response::HTTP_OK);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     * 작업중단...
+     */
+    public function updateMobigo()
+    {
+        Log::info("### TbSalesmanController updateMobigo START");
+        $testIds = array(
+            'sell3_5',
+            'sellscan',
+            'Mtest3',
+            'Mtest2', 'Sell002'
+        );
+        $users = User::select('id', 'mobigo_user_id', 'payment_status', 'mobigo_live_start_date', 'mobigo_live_end_date', 'pay_type')
+            ->with(array('store_account' => function ($query) {
+                $query->with(array('store' => function ($query) {
+                    $query->with("store_plansLast");
+                }));
+            }))->with('payment_recurring')
+            ->whereRaw('LENGTH(mobigo_user_id) > 0')
+            ->whereNotIn('mobigo_user_id', $testIds)
+            ->limit(100)
+            ->get();
+
+        $priceArray = array(
+            'FREE' => 9900,
+            'LIMIT' => 5500,
+            'UNLIMIT' => 0
+        );
+
+        foreach ($users as $key => $user) {
+
+            $dt = Carbon::now()->addDays(3);
+            log::info($user);
+            if (Carbon::parse($user->store_account->store->store_plansLast->expired_date)->lt(Carbon::now()->addDays(3))) {
+
+                log::info($user);
+                $mobigo_user_id = $user->mobigo_user_id;
+
+                $url = 'https://api.mobigo.co.kr/api/mobisell/checkMobigoUser.json';
+
+                $curl = curl_init();
+                curl_setopt_array($curl, array(
+                    CURLOPT_URL => $url,
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => '',
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => 'POST',
+                    CURLOPT_POSTFIELDS => ['user_id' => $mobigo_user_id],
+                ));
+
+                // $response = curl_exec($curl);
+
+                // curl_close($curl);
+                // $data = json_decode(json_encode($response), true);
+                // $response = json_decode($response);
+
+                // Log::info($data);
+
+                // if ($response->resultCode == 1 && $response->resultMsg == 'SUCCESS') {
+                //     $old_member = $response->userInfo;
+
+                //     $userUpdate = User::find($user->id);
+                //     $userUpdate->payment_status = $old_member->payment_status;
+                //     $userUpdate->mobigo_live_start_date = $old_member->live_start_date;
+                //     $userUpdate->mobigo_live_end_date = $old_member->live_end_date;
+                //     $userUpdate->pay_type = $old_member->pay_type;
+                //     $userUpdate->save();
+
+                //     $stp_id = $user->store_account->store->store_plansLast->id;
+
+                //     $storePlan = StorePlan::find($stp_id);
+
+                //     $is_update_store_plan = false;
+
+                //     if ($old_member->payment_status === 'LIVE') {
+                //         if ($old_member->pay_type === 'UNLIMIT') {
+                //             if (Carbon::parse($storePlan->expired_date)->lt(Carbon::parse($old_member->live_end_date))) {
+                //                 $is_update_store_plan = true;
+                //                 $new = Carbon::parse($old_member->live_end_date);   //old
+                //             }
+                //         }
+                //     }
+
+                //     if ($is_update_store_plan) {
+                //         $storePlan->expired_date = $new;
+                //         $storePlan->save();
+                //     }
+                //     if (isset($user->payment_recurring->id)) {
+                //         $priceUpdate = PaymentRecurring::find($user->payment_recurring->id);
+                //         if ($userUpdate->payment_status === 'LIVE') {
+                //             $price = $priceArray[$old_member->pay_type];
+                //         } else {
+                //             $price = 9900;
+                //         }
+                //         $priceUpdate->price = $price;
+                //         $priceUpdate->save();
+                //     }
+                // }
+            }
+        }
+        return response(1, Response::HTTP_OK);
     }
 
     /**

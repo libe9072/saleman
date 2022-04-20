@@ -51,6 +51,15 @@
 									>
 								</v-btn>
 							</v-col>
+							<!-- <v-col cols="auto" class="pl-2">
+								<v-btn
+									color="primary"
+									x-small
+									class="mr-1 font-weight-regular"
+									@click="updateMobigo"
+									>모비고매칭
+								</v-btn>
+							</v-col> -->
 						</v-row>
 					</v-col>
 					<v-col cols="12">
@@ -310,6 +319,9 @@ export default {
 				username: { val: "username" },
 				pay_type: { val: "pay_type" },
 				expired_date: { val: "expired_date" },
+				mobigo_live_start_date: {
+					val: "mobigo_live_start_date",
+				},
 				mobigo_live_end_date: {
 					val: "mobigo_live_end_date",
 				},
@@ -341,6 +353,17 @@ export default {
 			if (setExcelData === true) {
 				return this.excelData.json_data;
 			}
+		},
+		updateMobigo() {
+			// 모비고update
+			axios
+				.post("/api/saleman/updateMobigo?_method=PUT", {
+					_token: this.csrfToken,
+					params: { type: "mod" },
+				})
+				.then(({ data }) => {
+					console.info(data);
+				});
 		},
 		copyToClipboard(text) {
 			const element = document.createElement("textarea");

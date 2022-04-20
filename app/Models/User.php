@@ -57,4 +57,9 @@ class User extends Eloquent
 	{
 		return $this->belongsTo(\App\Models\StoreAccount::class, 'id', 'uID');
 	}
+
+	public function payment_recurring()
+	{
+		return $this->belongsTo(\App\Models\PaymentRecurring::class, 'id', 'user_id');
+	}
 }

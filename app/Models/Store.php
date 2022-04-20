@@ -68,4 +68,13 @@ class Store extends Eloquent
 	{
 		return $this->hasMany(\App\Models\StorePlan::class, 'storeID');
 	}
+
+	public function store_plansLast()
+	{
+		return $this->hasOne(\App\Models\StorePlan::class, 'storeID')
+			->where(function ($query) {
+				$query->whereNull('store_plans.canceled_at')
+					->Where('store_plans.expired_date', '>=', 'now()');
+			});
+	}
 }
