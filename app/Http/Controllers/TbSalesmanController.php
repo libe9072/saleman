@@ -54,17 +54,20 @@ class TbSalesmanController extends Controller
 
         DB::beginTransaction();
         try {
+            $usable_cp_month_cap = $request['is_admin'] !== 'Y' ? 1000 : 0;
+
             $tbSalesman = new TbSalesman;
             $tbSalesman->fill($params);
             $tbSalesman->sm_pw = DB::raw("PASSWORD('dkzm2021')");
-            $tbSalesman->usable_cp_month_cap = 0;
+            $tbSalesman->usable_cp_month_cap = $usable_cp_month_cap;
             $tbSalesman->sm_status = "Y";
             $tbSalesman->save();
+
 
             //담당자 보상개월수 변경 로그 등록
             $tbSalesmanCpMonthLog = new TbSalesmanCpMonthLog;
             $tbSalesmanCpMonthLog->old_cp_month_cap = 0;
-            $tbSalesmanCpMonthLog->set_cp_month_cap = 0;
+            $tbSalesmanCpMonthLog->set_cp_month_cap = $usable_cp_month_cap;
             $tbSalesmanCpMonthLog->admin_check  = $request['is_admin'];
             $tbSalesmanCpMonthLog->sm_seq_no   = $tbSalesman->seq_no;
             $tbSalesmanCpMonthLog->reg_sm_seq_no   = session('SSEQNO');
@@ -258,6 +261,22 @@ class TbSalesmanController extends Controller
                 Log::info($tbSalesman->sm_pw . "//" . DB::raw("PASSWORD('" . $sm_pw . "')"));
                 return  response(['code' => 0, 'message' => "비밀번호가 일치하지 않습니다."], Response::HTTP_EXPECTATION_FAILED);
             } else {
+                if ($tbSalesman->is_admin !== 'Y') {
+                    $tbSalesmanCpMonthLog1 = TbSalesmanCpMonthLog::where('set_cp_month_cap', 1000)->whereMonth('created_at', '=', date('m'))->count();
+                    if ($tbSalesmanCpMonthLog1 === 0) {
+                        //담당자 보상개월수 변경 로그 등록
+                        $tbSalesmanCpMonthLog = new TbSalesmanCpMonthLog;
+                        $tbSalesmanCpMonthLog->old_cp_month_cap = $tbSalesman->usable_cp_month_cap;
+                        $tbSalesmanCpMonthLog->set_cp_month_cap = 1000;
+                        $tbSalesmanCpMonthLog->sm_seq_no   = $tbSalesman->seq_no;
+                        $tbSalesmanCpMonthLog->reg_sm_seq_no   = 0;
+                        $tbSalesmanCpMonthLog->save();
+
+                        $tbSalesman->usable_cp_month_cap = 1000;
+
+                        $tbSalesman->save();
+                    }
+                }
                 session(['SSEQNO' => $tbSalesman->seq_no]); // 고유번호
                 session(['SNAME' => $tbSalesman->sm_name]); // 이름
                 session(['SUCP' => $tbSalesman->usable_cp_month_cap]); // 잔여기간

@@ -655,6 +655,7 @@ export default {
 						this.modifyData[num].sm_phone,
 						this.modifyData[num].seq_no
 					);
+					alert("수정버튼을 다시 클릭해 주세요.");
 				} else {
 					if (
 						this.valid2 === true &&
@@ -738,6 +739,8 @@ export default {
 		checkAdmin(i) {
 			if (this.modifyData[i].is_admin === "Y") {
 				this.modifyData[i].usable_cp_month_cap = 0;
+			} else {
+				this.modifyData[i].usable_cp_month_cap = 1000;
 			}
 		},
 	},
